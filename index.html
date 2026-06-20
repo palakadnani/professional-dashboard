@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Palak Adnani — Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#070b10;
+  --surf:#0c1219;
+  --surf2:#111820;
+  --cyan:#00c8e8;
+  --cyan2:rgba(0,200,232,0.5);
+  --amber:#e8a020;
+  --white:#f0f4f8;
+  --dim:rgba(160,200,220,0.55);
+  --border:rgba(0,200,232,0.14);
+  --border2:rgba(0,200,232,0.28);
+  --grotesk:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--grotesk);
+  overflow-x:hidden;
+}
+/* ── CANVAS ─────────────────────────── */
+#c{
+  position:fixed;inset:0;z-index:0;
+  pointer-events:none;
+}
+/* ── SCROLL WRAPPER ──────────────────── */
+#app{position:relative;z-index:10}
+ 
+/* ── NAV ─────────────────────────────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;
+  background:rgba(7,11,16,0.75);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:background .3s;
+}
+.nav-logo{
+  font-family:var(--grotesk);font-weight:700;font-size:15px;
+  letter-spacing:-.3px;color:var(--white);
+}
+.nav-logo em{color:var(--cyan);font-style:normal}
+.nav-links{display:flex;gap:28px}
+.nav-a{
+  font-family:var(--mono);font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--dim);
+  background:none;border:none;cursor:pointer;
+  transition:color .2s;padding:4px 0;
+}
+.nav-a:hover,.nav-a.on{color:var(--cyan)}
+.nav-status{
+  font-family:var(--mono);font-size:9px;letter-spacing:2px;
+  color:var(--dim);display:flex;align-items:center;gap:8px;
+}
+.pulse-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#3dffa0;box-shadow:0 0 6px #3dffa0;
+  animation:pd 2.5s ease-in-out infinite;
+}
+@keyframes pd{0%,100%{opacity:1}50%{opacity:.3}}
+ 
+/* ── SECTIONS ────────────────────────── */
+.sec{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:80px 6vw 60px;
+  position:relative;
+}
+ 
+/* ── SHARED REVEAL ───────────────────── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+ 
+/* ── GLASS PANEL ─────────────────────── */
+.glass{
+  background:rgba(12,18,25,0.82);
+  border:1px solid var(--border);
+  backdrop-filter:blur(24px);
+}
+/* ── LABEL TAG ───────────────────────── */
+.lbl{
+  font-family:var(--mono);font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:10px;display:block;
+}
+/* ── SECTION HEADING ─────────────────── */
+.sh{
+  font-size:clamp(28px,4.5vw,52px);font-weight:700;
+  letter-spacing:-.8px;color:var(--white);line-height:1.1;
+  margin-bottom:12px;
+}
+.sh span{color:var(--cyan)}
+.sd{
+  font-size:15px;color:var(--dim);line-height:1.75;
+  max-width:520px;margin-bottom:40px;
+}
+/* ── DIVIDER ─────────────────────────── */
+.div{height:1px;background:linear-gradient(90deg,var(--cyan2),transparent);margin:28px 0}
+ 
+/* ═══════════════════════════════════════
+   §1 — ENTRANCE
+═══════════════════════════════════════ */
+#entrance{
+  flex-direction:column;align-items:flex-start;
+  padding-left:max(6vw,40px);
+  min-height:100vh;
+}
+.e-pre{
+  font-family:var(--mono);font-size:10px;letter-spacing:4px;
+  text-transform:uppercase;color:var(--cyan);
+  opacity:0;animation:fu .7s .4s forwards;
+  margin-bottom:20px;
+}
+.e-name{
+  font-size:clamp(48px,8vw,100px);font-weight:700;
+  letter-spacing:-2px;line-height:.95;
+  color:var(--white);
+  opacity:0;animation:fu .8s .7s forwards;
+}
+.e-name .hi{color:var(--cyan)}
+.e-role{
+  margin-top:18px;
+  font-size:clamp(14px,1.8vw,20px);font-weight:300;
+  color:var(--dim);letter-spacing:.5px;
+  opacity:0;animation:fu .7s 1s forwards;
+}
+.e-bio{
+  margin-top:20px;max-width:560px;
+  font-size:15px;line-height:1.8;color:var(--dim);
+  opacity:0;animation:fu .7s 1.2s forwards;
+}
+.e-btns{
+  margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;
+  opacity:0;animation:fu .7s 1.5s forwards;
+}
+.btn{
+  font-family:var(--mono);font-size:10px;letter-spacing:2.5px;
+  text-transform:uppercase;padding:13px 28px;cursor:pointer;
+  border:none;text-decoration:none;display:inline-block;
+  transition:all .2s;
+}
+.btn-c{background:var(--cyan);color:#040810;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)}
+.btn-c:hover{background:#fff}
+.btn-o{background:transparent;color:var(--cyan);border:1px solid var(--border2)}
+.btn-o:hover{background:rgba(0,200,232,.08)}
+.e-stats{
+  margin-top:48px;display:flex;gap:2px;
+  opacity:0;animation:fu .7s 1.7s forwards;
+}
+.e-stat{
+  padding:18px 24px;background:rgba(12,18,25,.7);
+  border:1px solid var(--border);text-align:center;min-width:90px;
+}
+.e-stat strong{display:block;font-size:24px;font-weight:700;color:var(--cyan)}
+.e-stat span{display:block;font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:3px}
+.scroll-cue{
+  position:absolute;bottom:44px;left:6vw;
+  display:flex;align-items:center;gap:12px;
+  opacity:0;animation:fu .6s 2.2s forwards;
+}
+.sc-line{width:36px;height:1px;background:var(--dim);overflow:hidden;position:relative}
+.sc-line::after{
+  content:'';position:absolute;inset:0;background:var(--cyan);
+  animation:sc 2.2s ease-in-out 2.6s infinite;
+}
+@keyframes sc{0%{transform:translateX(-100%)}50%{transform:translateX(0)}100%{transform:translateX(100%)}}
+.sc-t{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+@keyframes fu{to{opacity:1;transform:none}}
+ 
+/* ═══════════════════════════════════════
+   §2 — ARC / ABOUT
+═══════════════════════════════════════ */
+#about{gap:6vw;flex-wrap:wrap}
+.arc-wrap{
+  flex:0 0 280px;height:280px;
+  position:relative;display:flex;align-items:center;justify-content:center;
+}
+.arc-r{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(0,200,232,.2);
+}
+.arc-r:nth-child(1){width:280px;height:280px;animation:ar 14s linear infinite;border-color:rgba(0,200,232,.1)}
+.arc-r:nth-child(2){width:210px;height:210px;animation:ar 9s linear infinite reverse;border-color:rgba(0,200,232,.2)}
+.arc-r:nth-child(3){width:145px;height:145px;animation:ar 6s linear infinite;border-color:rgba(0,200,232,.35)}
+.arc-r::after{
+  content:'';position:absolute;width:7px;height:7px;border-radius:50%;
+  background:var(--cyan);top:-3.5px;left:50%;transform:translateX(-50%);
+  box-shadow:0 0 10px var(--cyan),0 0 20px var(--cyan);
+}
+@keyframes ar{to{transform:rotate(360deg)}}
+.arc-c{
+  width:85px;height:85px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,200,232,.35) 0%,rgba(0,80,120,.12) 60%,transparent 100%);
+  border:1px solid rgba(0,200,232,.5);
+  box-shadow:0 0 40px rgba(0,200,232,.25),inset 0 0 20px rgba(0,200,232,.1);
+  display:flex;align-items:center;justify-content:center;z-index:1;
+  font-family:var(--mono);font-size:8px;letter-spacing:1.5px;
+  color:var(--cyan);text-align:center;line-height:1.6;
+}
+.about-r{flex:1;min-width:280px;max-width:580px}
+.edu-card{
+  margin-top:24px;padding:20px;
+  background:rgba(12,18,25,.85);border:1px solid var(--border);
+}
+.edu-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:4px}
+.edu-sub{font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:1px;margin-bottom:6px}
+.edu-detail{font-size:12px;color:var(--dim);line-height:1.65}
+.course-chips{margin-top:10px;display:flex;flex-wrap:wrap;gap:5px}
+.chip{
+  font-family:var(--mono);font-size:8px;letter-spacing:1px;
+  padding:3px 9px;border:1px solid var(--border);color:var(--dim);
+}
+ 
+/* ═══════════════════════════════════════
+   §3 — PROJECTS TABLE
+═══════════════════════════════════════ */
+#projects{flex-direction:column;align-items:flex-start;padding-top:80px;padding-bottom:80px}
+.proj-table{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  margin-top:8px;
+}
+.proj-card{
+  background:var(--surf);
+  padding:28px 24px;
+  cursor:pointer;
+  transition:background .25s;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;gap:0;
+}
+.proj-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,200,232,.06),transparent 55%);
+  opacity:0;transition:opacity .3s;
+}
+.proj-card:hover{background:#0e1824}
+.proj-card:hover::before{opacity:1}
+.proj-card:hover .proj-arr{opacity:1;transform:translateX(0)}
+.proj-num{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--cyan);opacity:.55;margin-bottom:12px}
+.proj-icon{font-size:26px;margin-bottom:12px;display:block}
+.proj-cat{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.proj-title{font-size:16px;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.3}
+.proj-blurb{font-size:12px;color:var(--dim);line-height:1.65;margin-bottom:16px;flex:1}
+.proj-chips{display:flex;flex-wrap:wrap;gap:5px}
+.proj-chip{font-family:var(--mono);font-size:8px;letter-spacing:1px;padding:3px 8px;border:1px solid rgba(0,200,232,.15);color:rgba(0,200,232,.7)}
+.proj-arr{
+  position:absolute;bottom:22px;right:20px;
+  font-size:16px;color:var(--cyan);
+  opacity:0;transform:translateX(-8px);
+  transition:opacity .25s,transform .25s;
+}
+.award-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:10px;font-family:var(--mono);font-size:8px;letter-spacing:1px;
+  color:var(--amber);border:1px solid rgba(232,160,32,.3);
+  padding:3px 8px;
+}
+ 
+/* ═══════════════════════════════════════
+   §4 — SKILLS BOARD
+═══════════════════════════════════════ */
+#skills{flex-direction:column;align-items:flex-start;padding-top:80px;padding-bottom:80px}
+.skills-wrap{width:100%;display:flex;gap:28px;flex-wrap:wrap}
+.skill-col{flex:1;min-width:220px}
+.skill-col-title{
+  font-family:var(--mono);font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--amber);
+  margin-bottom:16px;padding-bottom:8px;
+  border-bottom:1px solid rgba(232,160,32,.2);
+}
+.skill-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid rgba(0,200,232,.06);
+}
+.skill-item:last-child{border-bottom:none}
+.skill-name{font-size:13px;color:var(--white);font-weight:500}
+.skill-bar-wrap{width:90px;height:2px;background:rgba(0,200,232,.1);flex-shrink:0}
+.skill-bar{height:100%;background:var(--cyan);transition:width .8s var(--ease)}
+.skill-extra{margin-top:24px}
+.se-title{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.se-chips{display:flex;flex-wrap:wrap;gap:6px}
+.se-chip{font-family:var(--mono);font-size:9px;letter-spacing:1px;padding:5px 12px;border:1px solid var(--border);color:var(--dim)}
+ 
+/* ═══════════════════════════════════════
+   §5 — EXPERIENCE / TIMELINE
+═══════════════════════════════════════ */
+#experience{flex-direction:column;align-items:flex-start;padding-top:80px;padding-bottom:80px}
+.tl{width:100%;max-width:820px}
+.tl-item{
+  display:flex;gap:28px;padding-bottom:40px;position:relative;
+}
+.tl-item:not(:last-child)::before{
+  content:'';position:absolute;left:22px;top:48px;bottom:0;width:1px;
+  background:linear-gradient(to bottom,var(--border2),transparent);
+}
+.tl-l{flex-shrink:0}
+.tl-dot{
+  width:44px;height:44px;
+  border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:9px;color:var(--cyan);
+  background:var(--surf);letter-spacing:1px;
+}
+.tl-r{flex:1;padding-top:4px}
+.tl-mis{font-family:var(--mono);font-size:8px;letter-spacing:2.5px;color:var(--cyan);margin-bottom:5px;text-transform:uppercase}
+.tl-title{font-size:16px;font-weight:600;color:var(--white);margin-bottom:3px}
+.tl-org{font-size:12px;color:var(--amber);margin-bottom:8px;font-family:var(--mono);letter-spacing:.5px}
+.tl-desc{font-size:13px;color:var(--dim);line-height:1.7}
+.tl-pts{margin-top:8px;padding-left:14px}
+.tl-pts li{font-size:12px;color:var(--dim);line-height:1.65;margin-bottom:4px}
+.tl-status{
+  display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+  font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;
+}
+.tl-status::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 6px currentColor}
+.s-active{color:#3dffa0}
+.s-done{color:var(--cyan)}
+ 
+/* ═══════════════════════════════════════
+   §6 — CONTACT TERMINAL
+═══════════════════════════════════════ */
+#contact{flex-direction:column;align-items:center;padding-top:80px;padding-bottom:80px;text-align:center}
+.term{
+  max-width:640px;width:100%;
+  background:rgba(7,11,16,.97);border:1px solid var(--border2);
+  overflow:hidden;text-align:left;
+}
+.term-bar{
+  height:34px;background:rgba(0,200,232,.04);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 14px;gap:7px;
+}
+.td{width:10px;height:10px;border-radius:50%}
+.td:nth-child(1){background:#ff5f57}
+.td:nth-child(2){background:#febc2e}
+.td:nth-child(3){background:#28c840}
+.term-ti{flex:1;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--dim)}
+.term-body{padding:28px 28px 32px}
+.tl2{font-family:var(--mono);font-size:12px;color:var(--dim);line-height:2.1}
+.tp{color:var(--cyan);margin-right:6px}
+.tv{color:var(--white)}
+.ta{color:var(--cyan);text-decoration:none}
+.ta:hover{text-decoration:underline}
+.cur{display:inline-block;width:7px;height:13px;background:var(--cyan);vertical-align:middle;margin-left:3px;animation:bc 1.1s step-end infinite}
+@keyframes bc{50%{opacity:0}}
+.contact-btns{display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+ 
+/* ═══════════════════════════════════════
+   PROJECT MODAL
+═══════════════════════════════════════ */
+#modal{
+  display:none;position:fixed;inset:0;z-index:300;
+  background:rgba(4,8,14,.88);backdrop-filter:blur(12px);
+  align-items:center;justify-content:center;padding:40px 5vw;
+}
+#modal.open{display:flex}
+.modal-inner{
+  max-width:680px;width:100%;
+  background:rgba(10,16,24,.98);border:1px solid var(--border2);
+  max-height:88vh;overflow-y:auto;
+  position:relative;
+}
+.modal-inner::-webkit-scrollbar{width:3px}
+.modal-inner::-webkit-scrollbar-thumb{background:var(--cyan2);border-radius:2px}
+.modal-head{
+  padding:28px 32px 20px;
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:rgba(10,16,24,.98);z-index:1;
+}
+.modal-lbl{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
+.modal-title{font-size:22px;font-weight:700;color:var(--white)}
+.modal-close{
+  position:absolute;top:24px;right:24px;
+  width:30px;height:30px;background:transparent;border:1px solid var(--border);
+  color:var(--dim);font-size:13px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .2s,color .2s;
+}
+.modal-close:hover{border-color:var(--cyan);color:var(--cyan)}
+.modal-body{padding:24px 32px 32px}
+.modal-media{
+  width:100%;aspect-ratio:16/9;
+  background:rgba(0,20,35,.6);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:24px;position:relative;overflow:hidden;
+}
+.modal-media img,.modal-media video{
+  width:100%;height:100%;object-fit:cover;display:none;
+}
+.modal-media img.show,.modal-media video.show{display:block}
+.media-ph{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--dim);text-align:center}
+.media-ph span{display:block;font-size:28px;margin-bottom:8px}
+.m-sec{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin:20px 0 8px;border-left:2px solid var(--cyan);padding-left:10px}
+.m-txt{font-size:13px;color:var(--dim);line-height:1.75}
+.m-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.m-chip{font-family:var(--mono);font-size:8px;letter-spacing:1px;padding:4px 10px;border:1px solid var(--border);color:rgba(0,200,232,.7)}
+.m-links{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.m-link{
+  font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;color:var(--cyan);border:1px solid var(--border);
+  padding:9px 18px;transition:background .2s,border-color .2s;
+}
+.m-link:hover{background:rgba(0,200,232,.08);border-color:var(--cyan)}
+.media-nav{display:flex;gap:6px;margin-top:8px}
+.mn-dot{width:14px;height:2px;background:var(--border2);cursor:pointer;transition:background .2s,width .2s}
+.mn-dot.on{background:var(--cyan);width:24px}
+ 
+/* ── FOOTER ───────────────────────────── */
+footer{
+  text-align:center;padding:28px;border-top:1px solid var(--border);
+  font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--dim);
+}
+/* ── UTILITY ──────────────────────────── */
+.hud-corner{position:fixed;z-index:150;pointer-events:none;width:40px;height:40px;opacity:.4}
+.hud-corner.tl{top:66px;left:16px;border-top:1px solid var(--cyan);border-left:1px solid var(--cyan)}
+.hud-corner.tr{top:66px;right:16px;border-top:1px solid var(--cyan);border-right:1px solid var(--cyan)}
+.hud-corner.bl{bottom:16px;left:16px;border-bottom:1px solid var(--cyan);border-left:1px solid var(--cyan)}
+.hud-corner.br{bottom:16px;right:16px;border-bottom:1px solid var(--cyan);border-right:1px solid var(--cyan)}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:5;
+  background:radial-gradient(ellipse at center,transparent 40%,rgba(4,8,14,.65) 100%);
+}
+@media(max-width:700px){
+  .nav-links{display:none}
+  .e-stats{flex-wrap:wrap}
+  #about{flex-direction:column}
+}
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Palak <em>Adnani</em></div>
+  <div class="nav-links">
+    <button class="nav-a" onclick="goto('entrance')">Home</button>
+    <button class="nav-a" onclick="goto('about')">About</button>
+    <button class="nav-a" onclick="goto('projects')">Projects</button>
+    <button class="nav-a" onclick="goto('skills')">Skills</button>
+    <button class="nav-a" onclick="goto('experience')">Experience</button>
+    <button class="nav-a" onclick="goto('contact')">Contact</button>
+  </div>
+  <div class="nav-status"><div class="pulse-dot"></div>Online · SUTD</div>
+</nav>
+ 
+<!-- HUD corners -->
+<div class="hud-corner tl"></div>
+<div class="hud-corner tr"></div>
+<div class="hud-corner bl"></div>
+<div class="hud-corner br"></div>
+ 
+<!-- 3D BACKGROUND CANVAS -->
+<canvas id="c"></canvas>
+ 
+<div id="app">
+ 
+<!-- ═══ §1 ENTRANCE ═══════════════════════════ -->
+<section class="sec" id="entrance">
+  <div>
+    <div class="e-pre">Engineering Command Center // SUTD EPD</div>
+    <h1 class="e-name">Palak<br><span class="hi">Adnani</span></h1>
+    <p class="e-role">Robotics &amp; Engineering Product Development · Computer Science Minor</p>
+    <p class="e-bio">Aspiring Robotics Engineer with hands-on experience integrating mechanical design, electronics, embedded systems, and AI-driven solutions. I turn ideas into functional prototypes through rapid iteration, fabrication, and testing.</p>
+    <div class="e-btns">
+      <button class="btn btn-c" onclick="goto('projects')">View Projects</button>
+      <button class="btn btn-o" onclick="goto('contact')">Get in Touch</button>
+      <a href="#" class="btn btn-o" id="resume-link">Download Resume</a>
+    </div>
+    <div class="e-stats rv">
+      <div class="e-stat"><strong>6+</strong><span>Projects</span></div>
+      <div class="e-stat"><strong>3+</strong><span>Years Building</span></div>
+      <div class="e-stat"><strong>2</strong><span>Awards</span></div>
+      <div class="e-stat"><strong>SUTD</strong><span>EPD Major</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <div class="sc-line"></div>
+    <span class="sc-t">Scroll to explore the lab</span>
+  </div>
+</section>
+ 
+<!-- ═══ §2 ABOUT / ARC ═════════════════════════ -->
+<section class="sec" id="about">
+  <div class="arc-wrap rv">
+    <div class="arc-r"></div>
+    <div class="arc-r"></div>
+    <div class="arc-r"></div>
+    <div class="arc-c">ARC<br>CORE<br>ACTIVE</div>
+  </div>
+  <div class="about-r">
+    <span class="lbl rv">// Profile · Bio</span>
+    <h2 class="sh rv">About <span>Me</span></h2>
+    <p class="sd rv">
+      I'm a third
+      -year Engineering Product Development student at SUTD, specialising in mechatronics, embedded systems, and AI-integrated robotics. I love building things that exist at the intersection of hardware and software — from soldering PCBs to training computer vision models.
+    </p>
+    <div class="edu-card rv">
+      <div class="edu-title">Singapore University of Technology and Design (SUTD)</div>
+      <div class="edu-sub">B.Eng. Engineering Product Development · Computer Science Minor · Sep 2024 – Present</div>
+      <div class="edu-detail">Relevant Coursework:</div>
+      <div class="course-chips">
+        <span class="chip">Circuits &amp; Electronics</span>
+        <span class="chip">Systems &amp; Control</span>
+        <span class="chip">Computational Engineering</span>
+        <span class="chip">Design Engineering</span>
+        <span class="chip">Structures &amp; Materials</span>
+        <span class="chip">Electromagnetics</span>
+        <span class="chip">Data-Driven World</span>
+        <span class="chip">Modelling &amp; Analysis</span>
+      </div>
+    </div>
+    <div class="edu-card rv" style="margin-top:12px">
+      <div class="edu-title">Fountainhead School, Surat — IBDP</div>
+      <div class="edu-sub">Mathematics AA HL · Physics HL · Economics HL · Chemistry SL · Apr 2022 – May 2024</div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ═══ §3 PROJECTS TABLE ════════════════════════ -->
+<section class="sec" id="projects">
+  <div style="width:100%">
+    <span class="lbl rv">// Prototype Laboratory · Project Workbench</span>
+    <h2 class="sh rv">Projects</h2>
+    <p class="sd rv">Each project below is a real prototype built from scratch. Click any card to open the engineering brief.</p>
+ 
+    <div class="proj-table rv">
+ 
+      <div class="proj-card" onclick="openProj(0)">
+        <div class="proj-num">PROJECT // 001</div>
+        <span class="proj-icon">👁️</span>
+        <div class="proj-cat">Robotics · Computer Vision · AI</div>
+        <div class="proj-title">IRIS — Intelligent Radar for Inclusive Sports</div>
+        <p class="proj-blurb">Wearable assistive device for visually impaired football players using haptic feedback, Raspberry Pi camera systems, and YOLO-based computer vision for player and ball detection.</p>
+        <div class="proj-chips">
+          <span class="proj-chip">Raspberry Pi</span><span class="proj-chip">OpenCV</span>
+          <span class="proj-chip">YOLO</span><span class="proj-chip">PyTorch</span><span class="proj-chip">Python</span>
+        </div>
+        <div class="proj-arr">→</div>
+      </div>
+ 
+      <div class="proj-card" onclick="openProj(1)">
+        <div class="proj-num">PROJECT // 002</div>
+        <span class="proj-icon">🦾</span>
+        <div class="proj-cat">Robotics · Mechanical Design</div>
+        <div class="proj-title">Jeeno — Assistive Feeding Robotic Arm</div>
+        <p class="proj-blurb">A human-centred 6-DOF robotic feeding assistant designed to improve independence for users with motor difficulties. Focus on mechanical prototyping, actuation, and electronics integration.</p>
+        <div class="proj-chips">
+          <span class="proj-chip">Fusion 360</span><span class="proj-chip">CAD</span>
+          <span class="proj-chip">Embedded Systems</span><span class="proj-chip">Servo Control</span>
+        </div>
+        <div class="proj-arr">→</div>
+      </div>
+ 
+      <div class="proj-card" onclick="openProj(2)">
+        <div class="proj-num">PROJECT // 003</div>
+        <span class="proj-icon">🏖️</span>
+        <div class="proj-cat">Embedded Systems · Sustainability</div>
+        <div class="proj-title">SeaSoar — Beach Cleaning Robot</div>
+        <p class="proj-blurb">ESP32-based motor control system powering six motors with remote operation. Built foundational skills in soldering, wiring, and embedded systems. Won the Jyoti &amp; Aditya Mathur Sustainability Award.</p>
+        <div class="proj-chips">
+          <span class="proj-chip">ESP32</span><span class="proj-chip">Motor Control</span>
+          <span class="proj-chip">CAD</span><span class="proj-chip">Electronics</span>
+        </div>
+        <div class="award-badge">🏆 Sustainability Award</div>
+        <div class="proj-arr">→</div>
+      </div>
+ 
+      <div class="proj-card" onclick="openProj(3)">
+        <div class="proj-num">PROJECT // 004</div>
+        <span class="proj-icon">🌊</span>
+        <div class="proj-cat">Robotics · Mechanical Design</div>
+        <div class="proj-title">Underwater Robot — ESC Tube (UWU Club)</div>
+        <p class="proj-blurb">Designing the internal electronics layout for an underwater robot ESC tube — considering waterproofing, component placement, and weight distribution for a fully submersible system.</p>
+        <div class="proj-chips">
+          <span class="proj-chip">CAD</span><span class="proj-chip">Electronics Integration</span>
+          <span class="proj-chip">Mechanical Design</span><span class="proj-chip">SUTD</span>
+        </div>
+        <div class="proj-arr">→</div>
+      </div>
+ 
+      <div class="proj-card" onclick="openProj(4)">
+        <div class="proj-num">PROJECT // 005</div>
+        <span class="proj-icon">🆘</span>
+        <div class="proj-cat">Robotics · Embedded Systems</div>
+        <div class="proj-title">D.O.R.I — Drowning Onset Rescue Instrument</div>
+        <p class="proj-blurb">Designing a rescue mechanism and integrated mechanical-electrical systems for reliable deployment to unconscious or unresponsive drowning victims. Part of the 30.007 course at SUTD.</p>
+        <div class="proj-chips">
+          <span class="proj-chip">CAD</span><span class="proj-chip">Robotics</span>
+          <span class="proj-chip">Embedded Systems</span><span class="proj-chip">SUTD</span>
+        </div>
+        <div class="proj-arr">→</div>
+      </div>
+ 
+      <div class="proj-card" onclick="openProj(5)">
+        <div class="proj-num">PROJECT // 006</div>
+        <span class="proj-icon">☀️</span>
+        <div class="proj-cat">Renewable Energy · Field Engineering</div>
+        <div class="proj-title">Off-Grid PV Solar Installation — Indonesia</div>
+        <p class="proj-blurb">Designed and installed a complete off-grid photovoltaic system powering a water pump in a rural Indonesian village. Handled full electrical circuitry, battery bank sizing, and on-site installation. Won Best Team Award.</p>
+        <div class="proj-chips">
+          <span class="proj-chip">Site Analysis</span><span class="proj-chip">Circuit Assembly</span>
+          <span class="proj-chip">Battery Sizing</span><span class="proj-chip">Solar</span>
+        </div>
+        <div class="award-badge">🏆 Best Team Award</div>
+        <div class="proj-arr">→</div>
+      </div>
+ 
+      <div class="proj-card" onclick="openProj(6)">
+        <div class="proj-num">PROJECT // 007</div>
+        <span class="proj-icon">🤖</span>
+        <div class="proj-cat">Robotics · Competition</div>
+        <div class="proj-title">First Tech Challenge — Team LabFusion</div>
+        <p class="proj-blurb">Developed robot control, sensor integration, and mechanism assembly for object detection, colour identification, and hanging tasks. Team awarded the Control Award for sensor integration.</p>
+        <div class="proj-chips">
+          <span class="proj-chip">Sensor Integration</span><span class="proj-chip">Robot Control</span>
+          <span class="proj-chip">Mechanism Design</span><span class="proj-chip">FTC</span>
+        </div>
+        <div class="award-badge">🏆 Control Award</div>
+        <div class="proj-arr">→</div>
+      </div>
+ 
+      <div class="proj-card" onclick="openProj(7)">
+        <div class="proj-num">PROJECT // 008</div>
+        <span class="proj-icon">🎨</span>
+        <div class="proj-cat">Software · Hardware · Fabrication</div>
+        <div class="proj-title">Colour-Mixing Automation — Moxin Technology</div>
+        <p class="proj-blurb">Developed a colour-mixing automation system integrating mechanical mechanisms, digital fabrication, and embedded hardware at Moxin Technology (TIIDE Programme). Also extended Hanyuan 3D workflow via Blender-based image-to-STL generation.</p>
+        <div class="proj-chips">
+          <span class="proj-chip">Blender</span><span class="proj-chip">Python</span>
+          <span class="proj-chip">Stepper Motors</span><span class="proj-chip">PCB Design</span><span class="proj-chip">CAD</span>
+        </div>
+        <div class="proj-arr">→</div>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+<!-- ═══ §4 SKILLS BOARD ══════════════════════════ -->
+<section class="sec" id="skills">
+  <div style="width:100%">
+    <span class="lbl rv">// Engineering Tool Wall · Fabrication Bay</span>
+    <h2 class="sh rv">Skills &amp; <span>Tools</span></h2>
+    <p class="sd rv">Every tool has been used on a real project. No theoretical knowledge listed.</p>
+ 
+    <div class="skills-wrap rv">
+ 
+      <div class="skill-col">
+        <div class="skill-col-title">Embedded Systems</div>
+        <div class="skill-item"><span class="skill-name">ESP32</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="85"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Raspberry Pi</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="82"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Arduino</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="80"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Motor Control</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="75"></div></div></div>
+        <div class="skill-item"><span class="skill-name">PCB Design</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="65"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Soldering</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="78"></div></div></div>
+        <div class="skill-item"><span class="skill-name">RFID / Sensors</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="70"></div></div></div>
+      </div>
+ 
+      <div class="skill-col">
+        <div class="skill-col-title">Programming</div>
+        <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="88"></div></div></div>
+        <div class="skill-item"><span class="skill-name">C / C++</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="75"></div></div></div>
+        <div class="skill-item"><span class="skill-name">OpenCV</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="78"></div></div></div>
+        <div class="skill-item"><span class="skill-name">YOLO / PyTorch</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="70"></div></div></div>
+        <div class="skill-item"><span class="skill-name">MATLAB</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="65"></div></div></div>
+        <div class="skill-item"><span class="skill-name">HTML / CSS</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="60"></div></div></div>
+      </div>
+ 
+      <div class="skill-col">
+        <div class="skill-col-title">Mechanical &amp; Fabrication</div>
+        <div class="skill-item"><span class="skill-name">Fusion 360</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="82"></div></div></div>
+        <div class="skill-item"><span class="skill-name">AutoCAD</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="75"></div></div></div>
+        <div class="skill-item"><span class="skill-name">3D Printing</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="85"></div></div></div>
+        <div class="skill-item"><span class="skill-name">CNC Milling</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="65"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Water Jet / Lathe</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="60"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Welding</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="55"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Zund Cutter</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="60"></div></div></div>
+      </div>
+ 
+    </div>
+ 
+    <div class="skill-extra rv">
+      <div class="se-title">Also experienced with</div>
+      <div class="se-chips">
+        <span class="se-chip">System Integration</span>
+        <span class="se-chip">Rapid Prototyping</span>
+        <span class="se-chip">Circuit Design</span>
+        <span class="se-chip">Human-Centred Design</span>
+        <span class="se-chip">Blender</span>
+        <span class="se-chip">Stepper Motors</span>
+        <span class="se-chip">Haptic Feedback Systems</span>
+        <span class="se-chip">STL Generation</span>
+        <span class="se-chip">Battery Sizing</span>
+        <span class="se-chip">Solar Charge Controllers</span>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ═══ §5 EXPERIENCE ═════════════════════════════ -->
+<section class="sec" id="experience">
+  <div style="width:100%;max-width:860px">
+    <span class="lbl rv">// Mission Archive · Experience Log</span>
+    <h2 class="sh rv">Experience</h2>
+    <p class="sd rv">A log of internships, teaching roles, competitions, and research missions.</p>
+ 
+    <div class="tl">
+ 
+      <div class="tl-item rv">
+        <div class="tl-l"><div class="tl-dot">M01</div></div>
+        <div class="tl-r">
+          <div class="tl-mis">Mission 001 // Ongoing</div>
+          <div class="tl-title">Hardware &amp; Software Engineering Intern</div>
+          <div class="tl-org">Moxin Technology — TIIDE Programme Scholarship (China)</div>
+          <ul class="tl-pts">
+            <li>Extended Hanyuan 3D deployment workflow through Blender-based image-to-STL generation and product customisation</li>
+            <li>Developed a colour-mixing automation system integrating mechanical mechanisms, digital fabrication, and embedded hardware</li>
+            <li>Designing circuit diagram to power the Baby Shark mixing device (taken forward as a product)</li>
+          </ul>
+          <div class="tl-status s-active">Active</div>
+        </div>
+      </div>
+ 
+      <div class="tl-item rv">
+        <div class="tl-l"><div class="tl-dot">M02</div></div>
+        <div class="tl-r">
+          <div class="tl-mis">Mission 002 // Jan 2026 – May 2026</div>
+          <div class="tl-title">Teaching Assistant — Technological World</div>
+          <div class="tl-org">SUTD — Electromagnetism &amp; Circuit Analysis</div>
+          <ul class="tl-pts">
+            <li>Supported students in hands-on problem-solving for Coulomb's Law, Gauss' Law, Biot-Savart Law, Ampere's Law, Faraday's Law, and Kirchhoff's Laws</li>
+          </ul>
+          <div class="tl-status s-active">Active</div>
+        </div>
+      </div>
+ 
+      <div class="tl-item rv">
+        <div class="tl-l"><div class="tl-dot">M03</div></div>
+        <div class="tl-r">
+          <div class="tl-mis">Mission 003 // Sep 2025</div>
+          <div class="tl-title">Global Experiential Opportunity — PV Solar Installation</div>
+          <div class="tl-org">UGM, Indonesia</div>
+          <ul class="tl-pts">
+            <li>Designed and installed a complete off-grid photovoltaic system powering a water pump in a rural village</li>
+            <li>Handled full electrical circuitry: battery bank sizing, wiring, solar charge controller integration, and on-site installation</li>
+            <li>Received the Best Team Award</li>
+          </ul>
+          <div class="tl-status s-done">Completed · 🏆 Best Team Award</div>
+        </div>
+      </div>
+ 
+      <div class="tl-item rv">
+        <div class="tl-l"><div class="tl-dot">M04</div></div>
+        <div class="tl-r">
+          <div class="tl-mis">Mission 004 // May 2025 – Jun 2026</div>
+          <div class="tl-title">Secretary — Namaste Indian Cultural Group</div>
+          <div class="tl-org">SUTD</div>
+          <ul class="tl-pts">
+            <li>Managed communications, logistics, and coordination of cultural events</li>
+            <li>Facilitated cross-cultural engagement within the university community</li>
+          </ul>
+          <div class="tl-status s-active">Active</div>
+        </div>
+      </div>
+ 
+      <div class="tl-item rv">
+        <div class="tl-l"><div class="tl-dot">M05</div></div>
+        <div class="tl-r">
+          <div class="tl-mis">Mission 005 // Sep 2023 – Mar 2024</div>
+          <div class="tl-title">First Tech Robotics Challenge — Team LabFusion</div>
+          <div class="tl-org">Surat, Gujarat</div>
+          <ul class="tl-pts">
+            <li>Developed robot control, sensor integration, and mechanism assembly for object detection, colour ID, and hanging tasks</li>
+            <li>Team awarded the Control Award for sensor control integration</li>
+          </ul>
+          <div class="tl-status s-done">Completed · 🏆 Control Award</div>
+        </div>
+      </div>
+ 
+    </div>
+ 
+    <!-- Extracurriculars -->
+    <div class="div rv"></div>
+    <span class="lbl rv">// Beyond the Lab</span>
+    <div class="se-chips rv" style="margin-top:12px;gap:8px">
+      <span class="se-chip">Dance DerivativeZ — Annual Production "Byte" &amp; "Ignition"</span>
+      <span class="se-chip">Badminton — Represented SUTD at SUNIG</span>
+      <span class="se-chip">HYROX Women Open — Functional Fitness Race</span>
+      <span class="se-chip">Underwater Robotics Club (UWU)</span>
+    </div>
+  </div>
+</section>
+ 
+<!-- ═══ §6 CONTACT ════════════════════════════════ -->
+<section class="sec" id="contact">
+  <div style="width:100%;max-width:720px">
+    <span class="lbl rv" style="text-align:center;display:block">// Communication Terminal</span>
+    <h2 class="sh rv" style="text-align:center;margin-bottom:8px">Let's <span>Build</span> Something</h2>
+    <p style="text-align:center;font-size:14px;color:var(--dim);margin-bottom:40px" class="rv">
+      Open to research collaborations, internships, and engineering projects. Terminal is always online.
+    </p>
+ 
+    <div class="term rv">
+      <div class="term-bar">
+        <div class="td"></div><div class="td"></div><div class="td"></div>
+        <div class="term-ti">palak@engineering-lab ~ contact</div>
+      </div>
+      <div class="term-body">
+        <div class="tl2"><span class="tp">→</span><span style="color:var(--cyan)">whoami</span></div>
+        <div class="tl2">&nbsp;&nbsp;<span class="tv">Palak Adnani</span> · EPD @ SUTD · Robotics &amp; Embedded Systems</div>
+        <br>
+        <div class="tl2"><span class="tp">→</span><span style="color:var(--cyan)">cat contact.json</span></div>
+        <div class="tl2">&nbsp;&nbsp;phone &nbsp;&nbsp;&nbsp;<span class="tv"><a href="tel:+6596459401" class="ta">+65 9645 9401</a></span></div>
+        <div class="tl2">&nbsp;&nbsp;email &nbsp;&nbsp;&nbsp;<span class="tv"><a href="mailto:palak_adnani@mymail.sutd.edu.sg" class="ta">palak_adnani@mymail.sutd.edu.sg</a></span></div>
+        <div class="tl2">&nbsp;&nbsp;linkedin &nbsp;<span class="tv"><a href="https://www.linkedin.com/in/palakadnani" target="_blank" class="ta">linkedin.com/in/palakadnani</a></span></div>
+        <div class="tl2">&nbsp;&nbsp;resume &nbsp;&nbsp;<span class="tv"><a href="resume.pdf" target="_blank" class="ta" id="resume-dl">resume.pdf ↓</a></span></div>
+        <br>
+        <div class="tl2"><span class="tp">→</span><span style="color:var(--cyan)">availability</span></div>
+        <div class="tl2">&nbsp;&nbsp;<span style="color:#3dffa0">● Open to internships &amp; research roles</span><span class="cur"></span></div>
+      </div>
+    </div>
+ 
+    <div class="contact-btns rv">
+      <a href="mailto:palak_adnani@mymail.sutd.edu.sg" class="btn btn-c">Send Email</a>
+      <a href="https://www.linkedin.com/in/palakadnani" target="_blank" class="btn btn-o">LinkedIn</a>
+      <a href="resume.pdf" target="_blank" class="btn btn-o">Download Resume</a>
+    </div>
+  </div>
+</section>
+ 
+</div><!-- end #app -->
+ 
+<footer>
+  <span style="color:var(--cyan)">Palak Adnani</span> · EPD @ SUTD · Built with Three.js ·
+  <span style="color:var(--dim)">palak_adnani@mymail.sutd.edu.sg</span>
+</footer>
+ 
+<!-- PROJECT MODAL -->
+<div id="modal">
+  <div class="modal-inner">
+    <div class="modal-head">
+      <div class="modal-lbl" id="m-lbl"></div>
+      <div class="modal-title" id="m-title"></div>
+      <button class="modal-close" onclick="closeProj()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-media" id="m-media">
+        <div class="media-ph"><span id="m-icon">🤖</span>Add your photo or video here<br><small style="color:var(--dim);font-family:var(--mono);font-size:9px;letter-spacing:1px">See instructions below</small></div>
+      </div>
+      <div class="media-nav" id="m-nav"></div>
+      <div class="m-sec">Problem Statement</div>
+      <p class="m-txt" id="m-prob"></p>
+      <div class="m-sec">Engineering Approach</div>
+      <p class="m-txt" id="m-approach"></p>
+      <div class="m-sec">Outcome</div>
+      <p class="m-txt" id="m-outcome"></p>
+      <div class="m-sec">Technologies Used</div>
+      <div class="m-chips" id="m-chips"></div>
+      <div class="m-links" id="m-links"></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ═══════════════════════════════════════════════════════
+     THREE.JS — REALISTIC LAB ENVIRONMENT
+════════════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ── PROJECT DATA ──────────────────────────────────────────────
+const PROJECTS = [
+  {
+    id:'001',title:'IRIS — Intelligent Radar for Inclusive Sports',icon:'👁️',
+    cat:'Robotics · Computer Vision · AI',
+    prob:'Visually impaired athletes have virtually no assistive technology designed for dynamic team sports like football. Existing solutions are too slow, too bulky, or fail in real-time environments.',
+    approach:'Integrated a Raspberry Pi camera system with YOLO-based object detection to identify players and the ball in real time. Haptic feedback modules on a wearable band translate detected object positions into spatial vibration patterns the player can interpret intuitively. All inference runs on-device for sub-100ms latency.',
+    outcome:'Functional prototype demonstrated at SUTD × ST Engineering showcase. YOLO model fine-tuned on custom football dataset achieving >85% detection accuracy in field conditions.',
+    chips:['Raspberry Pi','OpenCV','YOLO','PyTorch','Python','Haptic Actuators','Computer Vision'],
+    media:[{type:'ph',label:'Add IRIS demo photo/video here'}],
+    links:[{label:'GitHub',url:'#'},{label:'Demo Video',url:'#'}]
+  },
+  {
+    id:'002',title:'Jeeno — Assistive Feeding Robotic Arm',icon:'🦾',
+    cat:'Robotics · Mechanical Design · Human-Centred',
+    prob:'People with motor difficulties such as those caused by cerebral palsy, MS, or stroke often rely entirely on caregivers for feeding — affecting dignity and independence.',
+    approach:'Designing a 6-DOF robotic arm in Fusion 360 with a human-centred form factor. The arm uses servo actuators with position feedback and is designed for tabletop mounting. Electronics integration includes microcontroller-based motion planning and safety cutoffs.',
+    outcome:'Mechanical prototype in progress. CAD assembly complete with 6 degrees of freedom. Electronics integration underway with actuation testing phase beginning.',
+    chips:['Fusion 360','CAD','Servo Motors','Embedded Systems','Mechanical Design','Human-Centred Design'],
+    media:[{type:'ph',label:'Add Jeeno CAD renders or prototype photos'}],
+    links:[{label:'GitHub',url:'#'}]
+  },
+  {
+    id:'003',title:'SeaSoar — Beach Cleaning Robot',icon:'🏖️',
+    cat:'Embedded Systems · Sustainability · Robotics',
+    prob:'Beach litter accumulates faster than manual volunteer efforts can address. There is a need for a cost-effective, remotely operated platform that can assist with debris collection.',
+    approach:'Built an ESP32-based control system driving six DC motors for a skid-steer beach robot. Designed custom motor driver circuits and implemented remote operation over WiFi. Mechanical chassis fabricated and iteratively tested on sand terrain.',
+    outcome:'Fully operational remote-controlled robot demonstrated on a beach environment. Won the Jyoti and Aditya Mathur Sustainability Award at SUTD.',
+    chips:['ESP32','Motor Control','C++','CAD','Soldering','Wiring','Electronics'],
+    media:[{type:'ph',label:'Add SeaSoar robot photo/video'}],
+    links:[{label:'GitHub',url:'#'}]
+  },
+  {
+    id:'004',title:'Underwater Robot — ESC Tube (UWU Club)',icon:'🌊',
+    cat:'Robotics · Waterproofing · Electronics',
+    prob:'Electronic speed controllers in underwater robots are extremely vulnerable to water ingress. The layout of an ESC tube must balance waterproofing integrity, heat dissipation, weight, and accessibility for maintenance.',
+    approach:'Designing the full internal electronics layout for the ESC tube including component placement strategy for weight distribution, potting compound selection for waterproofing, connector routing, and thermal management.',
+    outcome:'Design phase ongoing. CAD layout complete, component procurement underway for fabrication.',
+    chips:['CAD','Electronics Integration','Mechanical Design','Waterproofing','Weight Distribution'],
+    media:[{type:'ph',label:'Add ESC tube design/CAD screenshots'}],
+    links:[]
+  },
+  {
+    id:'005',title:'D.O.R.I — Drowning Onset Rescue Instrument',icon:'🆘',
+    cat:'Robotics · Safety Systems · Embedded',
+    prob:'Drowning is fast and silent. Lifeguards face dangerous, time-critical rescues, especially for unconscious victims. Existing throw-rings are passive and require the victim to hold on.',
+    approach:'Designing an autonomous rescue deployment mechanism that can be thrown to a victim and mechanically secure them. Integrated mechanical-electrical systems must operate reliably in water, detect victim contact, and provide buoyancy. Part of SUTD 30.007.',
+    outcome:'Active design and prototyping phase. Rescue mechanism concept validated, integrated CAD and electronics schematic in progress.',
+    chips:['CAD','Robotics','Embedded Systems','Mechanism Design','Electronics','Safety Systems'],
+    media:[{type:'ph',label:'Add D.O.R.I design photos/renders'}],
+    links:[]
+  },
+  {
+    id:'006',title:'Off-Grid PV Solar Installation — Indonesia',icon:'☀️',
+    cat:'Renewable Energy · Field Engineering',
+    prob:'A rural village in Indonesia lacked access to electricity for their water pump. Grid connection was impractical. A reliable, maintainable off-grid solar solution was needed with a minimal budget.',
+    approach:'As part of a student-faculty team (UGM Global Experiential Opportunity), performed site analysis, designed the system architecture, sized the battery bank for daily load requirements, wired the solar array, integrated the charge controller, and commissioned the full system on-site.',
+    outcome:'System successfully installed and operational. Water pump powered reliably. Team received the Best Team Award. Gained hands-on experience in full electrical system commissioning in field conditions.',
+    chips:['Site Analysis','Circuit Assembly','Battery Sizing','Solar Charge Controller','Wiring','Team Leadership'],
+    media:[{type:'ph',label:'Add Indonesia installation photos'}],
+    links:[]
+  },
+  {
+    id:'007',title:'First Tech Challenge — Team LabFusion',icon:'🤖',
+    cat:'Robotics · Competition · Sensor Integration',
+    prob:'The FTC Centrestage challenge required robots to detect, pick up, and place game elements using object detection, and complete complex tasks including hanging mechanisms under time pressure.',
+    approach:'Contributed to robot control software, sensor integration (colour and distance sensors), and mechanical assembly. Implemented object detection pipeline for colour identification and developed reliable actuator control for hanging mechanisms.',
+    outcome:'Team LabFusion awarded the Control Award for outstanding sensor control integration at the regional competition.',
+    chips:['Robot Control','Sensor Integration','Colour Detection','Mechanism Assembly','Competition Robotics'],
+    media:[{type:'ph',label:'Add FTC competition photos'}],
+    links:[]
+  },
+  {
+    id:'008',title:'Colour-Mixing Automation — Moxin Technology',icon:'🎨',
+    cat:'Hardware · Software · Digital Fabrication',
+    prob:'Manual colour mixing in Moxin\'s production workflow was inconsistent and time-consuming. A repeatable, automated solution was needed that integrated with their existing digital fabrication pipeline.',
+    approach:'Designed and built a colour-mixing automation system combining stepper motor-driven dispensing mechanisms, custom electronics, and software control. Also extended the Hanyuan 3D workflow by developing a Blender-based pipeline to convert product images to STL for customisation. Designed PCB schematic for the Baby Shark mixing device.',
+    outcome:'Automation system operational and taken forward as a Baby Shark product line. Blender-to-STL pipeline integrated into production workflow.',
+    chips:['Blender','Python','Stepper Motors','Electronics','PCB Design','CAD','Digital Fabrication'],
+    media:[{type:'ph',label:'Add Moxin automation system photos'}],
+    links:[]
+  }
+];
+ 
+// ── THREE.JS SCENE ────────────────────────────────────────────
+const canvas = document.getElementById('c');
+const W = () => window.innerWidth, H = () => window.innerHeight;
+ 
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(W(), H());
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 0.75;
+renderer.outputEncoding = THREE.sRGBEncoding;
+ 
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x05080d);
+scene.fog = new THREE.Fog(0x05080d, 18, 55);
+ 
+const cam = new THREE.PerspectiveCamera(52, W()/H(), 0.1, 100);
+cam.position.set(0, 2.8, 16);
+cam.lookAt(0, 1.5, 0);
+ 
+// ── 3-POINT LIGHTING RIG ──────────────────────────────────────
+// Ambient
+scene.add(new THREE.AmbientLight(0x08101a, 6));
+ 
+// Key light (from upper-left, warm-ish white)
+const key = new THREE.DirectionalLight(0xd0e8ff, 1.2);
+key.position.set(-6, 9, 4);
+key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048);
+key.shadow.camera.near = 0.5;
+key.shadow.camera.far = 50;
+key.shadow.camera.left = -15;
+key.shadow.camera.right = 15;
+key.shadow.camera.top = 15;
+key.shadow.camera.bottom = -15;
+key.shadow.bias = -0.0005;
+scene.add(key);
+ 
+// Fill light (right side, cooler)
+const fill = new THREE.DirectionalLight(0x8090c0, 0.4);
+fill.position.set(8, 5, 2);
+scene.add(fill);
+ 
+// Rim light (back, blue-ish — like the overhead lab strip)
+const rim = new THREE.DirectionalLight(0x2060a0, 0.6);
+rim.position.set(0, 8, -12);
+scene.add(rim);
+ 
+// Overhead cyan strip lights (realistic ceiling panels)
+const STRIP_POSITIONS = [[-5,0],[-2.5,0],[0,0],[2.5,0],[5,0],[-5,-8],[0,-8],[5,-8]];
+STRIP_POSITIONS.forEach(([x,z]) => {
+  const pl = new THREE.PointLight(0x0088bb, 0.55, 14);
+  pl.position.set(x, 6.2, z);
+  scene.add(pl);
+});
+ 
+// Warm background glow (like the workshop in the distance)
+const bgGlow = new THREE.PointLight(0xb05a10, 0.6, 28);
+bgGlow.position.set(0, 3, -18);
+scene.add(bgGlow);
+ 
+// Workstation glow (the actual desk area)
+const deskGlow = new THREE.PointLight(0x00aacc, 0.9, 10);
+deskGlow.position.set(0, 1.8, 1.5);
+scene.add(deskGlow);
+ 
+// ── MATERIALS ─────────────────────────────────────────────────
+const mFloor = new THREE.MeshStandardMaterial({color:0x0a0d12,metalness:0.6,roughness:0.55});
+const mMetal = new THREE.MeshStandardMaterial({color:0x1a2028,metalness:0.92,roughness:0.18});
+const mMetalD = new THREE.MeshStandardMaterial({color:0x0c1018,metalness:0.88,roughness:0.25});
+const mWood  = new THREE.MeshStandardMaterial({color:0x1c140a,metalness:0.05,roughness:0.82});
+const mWall  = new THREE.MeshStandardMaterial({color:0x090d12,metalness:0.3,roughness:0.88});
+const mGlass = new THREE.MeshPhysicalMaterial({color:0x4080a0,metalness:0,roughness:0,transmission:0.85,transparent:true,opacity:0.15,side:THREE.DoubleSide});
+const mHolo  = new THREE.MeshBasicMaterial({color:0x003850,transparent:true,opacity:0.78,side:THREE.DoubleSide});
+const mEdge  = new THREE.LineBasicMaterial({color:0x00aacc,transparent:true,opacity:0.55});
+const mCyan  = new THREE.MeshBasicMaterial({color:0x00c8e8,transparent:true,opacity:0.7});
+const mAmber = new THREE.MeshStandardMaterial({color:0xe8a020,metalness:0.4,roughness:0.5,emissive:0x704800,emissiveIntensity:0.3});
+const mCeil  = new THREE.MeshStandardMaterial({color:0x070a0e,metalness:0.2,roughness:0.92});
+ 
+function mkEdges(geo, mat){return new THREE.LineSegments(new THREE.EdgesGeometry(geo), mat || mEdge)}
+ 
+// ── ROOM GEOMETRY ─────────────────────────────────────────────
+// Floor
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(30, 60), mFloor);
+floor.rotation.x = -Math.PI/2; floor.position.y = -1.8;
+floor.receiveShadow = true; scene.add(floor);
+ 
+// Grid
+const grid = new THREE.GridHelper(30, 24, 0x0d1828, 0x07101a);
+grid.position.y = -1.79; scene.add(grid);
+ 
+// Ceiling
+const ceil = new THREE.Mesh(new THREE.PlaneGeometry(30, 60), mCeil);
+ceil.rotation.x = Math.PI/2; ceil.position.y = 7.5; scene.add(ceil);
+ 
+// Walls
+const bWall = new THREE.Mesh(new THREE.PlaneGeometry(30, 10), mWall);
+bWall.position.set(0, 3.2, -20); scene.add(bWall);
+const lWall = new THREE.Mesh(new THREE.PlaneGeometry(60, 10), mWall);
+lWall.rotation.y = Math.PI/2; lWall.position.set(-13, 3.2, -10); scene.add(lWall);
+const rWall = new THREE.Mesh(new THREE.PlaneGeometry(60, 10), mWall);
+rWall.rotation.y = -Math.PI/2; rWall.position.set(13, 3.2, -10); scene.add(rWall);
+ 
+// Ceiling light strips (physical mesh)
+function mkStrip(x, z, len=3.5){
+  const g = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.BoxGeometry(len, 0.06, 0.2), mMetalD);
+  body.position.y = 7.48; g.add(body);
+  const glow = new THREE.Mesh(new THREE.BoxGeometry(len-0.1, 0.02, 0.16),
+    new THREE.MeshBasicMaterial({color:0xbbeeff,transparent:true,opacity:0.9}));
+  glow.position.y = 7.49; g.add(glow);
+  g.position.set(x, 0, z);
+  scene.add(g);
+}
+[-5,-2.5,0,2.5,5].forEach(x => [1,-3,-7,-11,-15].forEach(z => mkStrip(x, z)));
+ 
+// ── CENTRAL CURVED WORKSTATION ────────────────────────────────
+// Tony-style curved desk built from arc segments
+const SEGS = 14, DESK_R = 3.9;
+for(let i=0;i<SEGS;i++){
+  const a = (i/SEGS)*Math.PI - Math.PI*0.06;
+  const x = Math.sin(a)*DESK_R, z = -Math.cos(a)*DESK_R + 1.2;
+  // Desk top segment
+  const top = new THREE.Mesh(new THREE.BoxGeometry(0.78, 0.07, 1.15), mMetal);
+  top.position.set(x, -0.55, z); top.rotation.y = -a;
+  top.castShadow = true; top.receiveShadow = true; scene.add(top);
+  // Desk front face
+  const front = new THREE.Mesh(new THREE.BoxGeometry(0.76, 1.35, 0.04), mMetalD);
+  front.position.set(Math.sin(a)*3.28, -1.22, -Math.cos(a)*3.28+1.2);
+  front.rotation.y = -a; scene.add(front);
+}
+// Desk inner panel
+const deskBase = new THREE.Mesh(new THREE.CylinderGeometry(3.2, 3.2, 0.06, 32, 1, false, Math.PI*0.06, Math.PI*0.88), mMetalD);
+deskBase.position.set(0, -0.56, 1.2); scene.add(deskBase);
+ 
+// ── HOLOGRAPHIC MONITORS (curved wrap like film) ───────────────
+const SCRS = 8, SCR_R = 3.55;
+const screens = [];
+for(let i=0;i<SCRS;i++){
+  const a = ((i/(SCRS-1))-0.5)*Math.PI*0.85;
+  const x = Math.sin(a)*SCR_R, z = -Math.cos(a)*SCR_R + 1.2;
+  const g = new THREE.Group();
+ 
+  // Screen frame (thin bezel)
+  const frame = new THREE.Mesh(new THREE.BoxGeometry(1.52, 0.94, 0.022), mMetalD);
+  g.add(frame);
+ 
+  // Screen surface
+  const scrMat = new THREE.MeshBasicMaterial({color:0x002a3d,transparent:true,opacity:0.9});
+  const scr = new THREE.Mesh(new THREE.PlaneGeometry(1.46, 0.88), scrMat);
+  scr.position.z = 0.013; g.add(scr);
+  screens.push(scrMat);
+ 
+  // Scan lines on screen
+  for(let r=-4;r<=4;r++){
+    const pts=[new THREE.Vector3(-0.72,r*0.1,0.014),new THREE.Vector3(0.72,r*0.1,0.014)];
+    const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({color:0x004466,transparent:true,opacity:0.3}));
+    g.add(l);
+  }
+ 
+  // Edge glow
+  g.add(mkEdges(new THREE.BoxGeometry(1.5, 0.92, 0.001)));
+ 
+  g.position.set(x, 0.85, z);
+  g.rotation.y = -a;
+  g.rotation.x = -0.08;
+  scene.add(g);
+}
+ 
+// ── HOLOGRAPHIC FLOATING PANELS (above desk) ──────────────────
+const holoPanels = [];
+function mkHoloPanel(x,y,z,w,h,ry=0){
+  const g = new THREE.Group();
+  const p = new THREE.Mesh(new THREE.PlaneGeometry(w,h), mHolo);
+  g.add(p);
+  const e = mkEdges(new THREE.PlaneGeometry(w,h));
+  g.add(e);
+  // subtle grid lines
+  for(let r=-3;r<=3;r++){
+    const pts=[new THREE.Vector3(-w/2,r*(h/7),0.001),new THREE.Vector3(w/2,r*(h/7),0.001)];
+    g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({color:0x00556a,transparent:true,opacity:0.25})));
+  }
+  g.position.set(x,y,z); g.rotation.y=ry;
+  scene.add(g); holoPanels.push(g);
+  return g;
+}
+mkHoloPanel(-3.8, 2.85, -2.8, 1.9, 1.15, 0.38);
+mkHoloPanel(3.8,  2.85, -2.8, 1.9, 1.15, -0.38);
+mkHoloPanel(0,    3.35, -4.6, 2.6, 1.3, 0);
+ 
+// ── ARC REACTOR (centre piece, above desk) ────────────────────
+const arcGroup = new THREE.Group();
+arcGroup.position.set(0, 2.6, -2);
+ 
+// Outer glowing rings
+[0.55, 0.38, 0.22].forEach((r, i) => {
+  const torus = new THREE.Mesh(
+    new THREE.TorusGeometry(r, 0.012, 8, 64),
+    new THREE.MeshBasicMaterial({color:0x00c8e8,transparent:true,opacity:0.6-i*0.12})
+  );
+  arcGroup.add(torus);
+});
+ 
+// Centre orb
+const orb = new THREE.Mesh(
+  new THREE.SphereGeometry(0.1, 16, 16),
+  new THREE.MeshStandardMaterial({color:0x00c8e8,emissive:0x00c8e8,emissiveIntensity:2,metalness:0,roughness:0})
+);
+arcGroup.add(orb);
+ 
+// Arc light
+const arcPl = new THREE.PointLight(0x00c8e8, 2.5, 5);
+arcGroup.add(arcPl);
+ 
+scene.add(arcGroup);
+ 
+// ── ROBOTIC ARM (left platform) ───────────────────────────────
+function mkArm(baseX, baseZ, scale=1){
+  const g = new THREE.Group();
+  const base=new THREE.Mesh(new THREE.CylinderGeometry(.28,.32,.22,16), mMetal);
+  base.position.y=0; g.add(base);
+  const l1=new THREE.Mesh(new THREE.BoxGeometry(.11,.85,.11), mMetal);
+  l1.position.set(.12,.53,0); l1.rotation.z=.3; g.add(l1);
+  const j1=new THREE.Mesh(new THREE.SphereGeometry(.1,10,10), mMetal);
+  j1.position.set(.26,.92,0); g.add(j1);
+  const l2=new THREE.Mesh(new THREE.BoxGeometry(.09,.72,.09), mMetal);
+  l2.position.set(.5,1.18,0); l2.rotation.z=-.35; g.add(l2);
+  const eff=new THREE.Mesh(new THREE.BoxGeometry(.2,.07,.24), mMetal);
+  eff.position.set(.76,1.45,0); g.add(eff);
+  // gripper fingers
+  [-.07,.07].forEach(ox=>{
+    const f=new THREE.Mesh(new THREE.BoxGeometry(.035,.14,.035), mMetalD);
+    f.position.set(.76+ox,1.38,0); g.add(f);
+  });
+  g.position.set(baseX,-1.8,baseZ);
+  g.scale.setScalar(scale);
+  scene.add(g); return g;
+}
+const arm1 = mkArm(-8.5, -5.5, 1.15);
+const arm2 = mkArm(8, -5, 0.95);
+ 
+// ── WORKBENCHES ───────────────────────────────────────────────
+function mkBench(x, z, w=2.8, d=0.95){
+  const g=new THREE.Group();
+  const top=new THREE.Mesh(new THREE.BoxGeometry(w,.065,d), mWood);
+  top.position.y=0; top.castShadow=true; top.receiveShadow=true; g.add(top);
+  // lip
+  const lip=new THREE.Mesh(new THREE.BoxGeometry(w,.04,.04), mMetal);
+  lip.position.set(0,.05,d/2); g.add(lip);
+  // legs
+  [[-(w/2-.07),-(d/2-.07)],[w/2-.07,-(d/2-.07)],[-(w/2-.07),d/2-.07],[w/2-.07,d/2-.07]].forEach(([lx,lz])=>{
+    const l=new THREE.Mesh(new THREE.BoxGeometry(.055,1.15,.055), mMetal);
+    l.position.set(lx,-.6,lz); g.add(l);
+  });
+  // lower shelf
+  const sh=new THREE.Mesh(new THREE.BoxGeometry(w-.1,.04,d-.1), mWood);
+  sh.position.y=-1.0; g.add(sh);
+  g.position.set(x,-.13,z);
+  scene.add(g); return g;
+}
+mkBench(-7.5, -1.5, 3);
+mkBench(7.5, -1.5, 3);
+mkBench(-8, -9, 2.8);
+mkBench(8, -9, 2.8);
+mkBench(0, -13.5, 4.5);
+ 
+// ── 3D PRINTER ────────────────────────────────────────────────
+function mk3DPrinter(x, z){
+  const g=new THREE.Group();
+  const body=new THREE.Mesh(new THREE.BoxGeometry(.78,.92,.62), mMetalD);
+  body.position.y=.46; g.add(body);
+  const bed=new THREE.Mesh(new THREE.BoxGeometry(.6,.025,.5), new THREE.MeshStandardMaterial({color:0x0a1828,metalness:.5,roughness:.6}));
+  bed.position.y=.12; g.add(bed);
+  const gantry=new THREE.Mesh(new THREE.BoxGeometry(.72,.025,.025), mMetal);
+  gantry.position.y=.88; g.add(gantry);
+  const nozzle=new THREE.Mesh(new THREE.CylinderGeometry(.018,.012,.14,8), mMetal);
+  nozzle.position.set(0,.81,0); g.add(nozzle);
+  const nglow=new THREE.PointLight(0x0066ff,.6,1.2);
+  nglow.position.set(0,.74,0); g.add(nglow);
+  g.add(mkEdges(new THREE.BoxGeometry(.78,.92,.62)));
+  g.position.set(x,-1.15,z); scene.add(g); return g;
+}
+mk3DPrinter(9, -2.5);
+ 
+// ── BACKGROUND VEHICLE PLATFORMS (like Tony's cars) ───────────
+function mkPlatform(x, z){
+  const g=new THREE.Group();
+  const plat=new THREE.Mesh(new THREE.BoxGeometry(2.4,.1,4.2), mMetal);
+  plat.receiveShadow=true; g.add(plat);
+  // car silhouette
+  const body=new THREE.Mesh(new THREE.BoxGeometry(1.7,.42,3.2), mMetalD);
+  body.position.y=.26; g.add(body);
+  const roof=new THREE.Mesh(new THREE.BoxGeometry(1.2,.36,1.8), mMetalD);
+  roof.position.y=.7; g.add(roof);
+  const wm=new THREE.MeshStandardMaterial({color:0x060a0e,metalness:.6,roughness:.5});
+  [[-0.9,.2,1.1],[0.9,.2,1.1],[-0.9,.2,-1.1],[0.9,.2,-1.1]].forEach(([wx,wy,wz])=>{
+    const w=new THREE.Mesh(new THREE.CylinderGeometry(.24,.24,.2,14), wm);
+    w.rotation.z=Math.PI/2; w.position.set(wx,wy,wz); g.add(w);
+  });
+  g.position.set(x,-1.75,z); scene.add(g);
+}
+mkPlatform(-9.5, -10);
+mkPlatform(9.5, -10);
+ 
+// ── SHELVING UNITS (back wall) ────────────────────────────────
+function mkShelf(x, z, shelves=4){
+  const g=new THREE.Group();
+  for(let s=0;s<shelves;s++){
+    const sh=new THREE.Mesh(new THREE.BoxGeometry(2,.04,.4), mWood);
+    sh.position.y=s*.55; g.add(sh);
+  }
+  // side posts
+  [-1,1].forEach(sx=>{
+    const p=new THREE.Mesh(new THREE.BoxGeometry(.04,shelves*.55,.4), mMetal);
+    p.position.set(sx*.98,(shelves*.55)/2-.28,0); g.add(p);
+  });
+  g.position.set(x,-1.75,z); scene.add(g);
+}
+mkShelf(-10.5, -15, 5);
+mkShelf(10.5, -15, 5);
+mkShelf(0, -18, 4);
+ 
+// ── GLASS DOOR (entrance) ─────────────────────────────────────
+const doorGroup = new THREE.Group();
+// Frame
+const doorFrameMat = new THREE.MeshStandardMaterial({color:0x1a2838,metalness:.95,roughness:.1});
+const doorFrame = new THREE.Mesh(new THREE.BoxGeometry(2.6,.1,4), doorFrameMat);
+doorFrame.position.y = 2; doorGroup.add(doorFrame);
+// Glass panels
+[-.65,.65].forEach(dx=>{
+  const panel=new THREE.Mesh(new THREE.PlaneGeometry(1.15,3.8), mGlass);
+  panel.position.set(dx,0,0); doorGroup.add(panel);
+});
+// Door handle
+const handle=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.5,8), mAmber);
+handle.rotation.z=Math.PI/2; handle.position.set(.4,-.2,.06); doorGroup.add(handle);
+doorGroup.position.set(0,.05,14); scene.add(doorGroup);
+ 
+// ── FLOATING PARTICLES ────────────────────────────────────────
+const PC=500, pPos=new Float32Array(PC*3);
+for(let i=0;i<PC;i++){
+  pPos[i*3]=(Math.random()-.5)*28;
+  pPos[i*3+1]=Math.random()*9-1.5;
+  pPos[i*3+2]=(Math.random()-.5)*48-10;
+}
+const pGeo=new THREE.BufferGeometry();
+pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+const pMesh=new THREE.Points(pGeo,
+  new THREE.PointsMaterial({color:0x004466,size:.045,transparent:true,opacity:.55}));
+scene.add(pMesh);
+ 
+// ── SCROLL → CAMERA PATH ──────────────────────────────────────
+let prog=0, tProg=0;
+window.addEventListener('scroll',()=>{
+  const tot=document.documentElement.scrollHeight-window.innerHeight;
+  tProg=Math.min(1, window.scrollY/tot);
+},{passive:true});
+ 
+// Camera path waypoints: [x, y, z, lookAtX, lookAtY, lookAtZ]
+const WAYPOINTS=[
+  [0, 2.8, 14,   0, 1.5,  0],   // entrance
+  [0, 2.2,  6,   0, 1.8, -2],   // arc / about
+  [0, 1.8,  0,   0, 0.5, -4],   // projects
+  [-2,1.8, -5,  -6, 1.5,-10],   // skills / left wall
+  [2, 1.8, -8,   6, 1.5,-14],   // experience / right
+  [0, 2.0,-13,   0, 1.0,-22],   // contact / back
+];
+function wpLerp(wp, t){
+  const n=WAYPOINTS.length-1, fi=t*n;
+  const i0=Math.floor(fi), i1=Math.min(i0+1,n);
+  const f=fi-i0;
+  return wp.map((_,k)=>WAYPOINTS[i0][k]+(WAYPOINTS[i1][k]-WAYPOINTS[i0][k])*f);
+}
+ 
+// ── CLOCK & ANIMATE ───────────────────────────────────────────
+const clock=new THREE.Clock();
+ 
+function lerp(a,b,t){return a+(b-a)*t}
+ 
+function animate(){
+  requestAnimationFrame(animate);
+  const t=clock.getElapsedTime();
+ 
+  prog=lerp(prog, tProg, 0.04);
+  const wp=wpLerp(WAYPOINTS, prog);
+  const sway=Math.sin(t*.28)*.035;
+ 
+  cam.position.set(
+    lerp(cam.position.x, wp[0]+sway, .05),
+    lerp(cam.position.y, wp[1], .04),
+    lerp(cam.position.z, wp[2], .04)
+  );
+  cam.lookAt(wp[3]+sway*.3, wp[4], wp[5]);
+ 
+  // Holographic panel float
+  holoPanels.forEach((p,i)=>{p.position.y=([2.85,2.85,3.35][i])+Math.sin(t*.55+i)*0.04});
+ 
+  // Arc reactor rings
+  const rings=arcGroup.children.filter(c=>c.type==='Mesh'&&c.geometry.type==='TorusGeometry');
+  rings.forEach((r,i)=>{
+    r.rotation.z=t*(.7-i*.15);
+    r.rotation.x=t*(.3+i*.1)*(i%2?1:-1);
+  });
+  arcPl.intensity=2.2+Math.sin(t*1.8)*.5;
+ 
+  // Screen flicker
+  screens.forEach((s,i)=>{s.opacity=0.85+Math.sin(t*(.35+i*.06))*.05});
+ 
+  // Arms idle
+  arm1.rotation.y=Math.sin(t*.38)*.1;
+  arm2.rotation.y=Math.sin(t*.38+2)*.08;
+ 
+  // Particles drift up
+  const pa=pMesh.geometry.attributes.position.array;
+  for(let i=0;i<PC;i++){pa[i*3+1]+=.0018;if(pa[i*3+1]>7.5)pa[i*3+1]=-1.5;}
+  pMesh.geometry.attributes.position.needsUpdate=true;
+ 
+  // Desk glow pulse
+  deskGlow.intensity=.8+Math.sin(t*1.2)*.15;
+ 
+  renderer.render(scene, cam);
+}
+animate();
+ 
+window.addEventListener('resize',()=>{
+  cam.aspect=W()/H();cam.updateProjectionMatrix();
+  renderer.setSize(W(),H());
+});
+ 
+// ── SCROLL REVEAL ─────────────────────────────────────────────
+const rvEls=document.querySelectorAll('.rv');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}
+  });
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+rvEls.forEach(el=>obs.observe(el));
+ 
+// Animate skill bars when visible
+document.querySelectorAll('.skill-bar').forEach(bar=>{
+  bar.style.width='0%';
+  const bObs=new IntersectionObserver(([e])=>{
+    if(e.isIntersecting){bar.style.width=bar.dataset.w+'%';bObs.unobserve(bar);}
+  },{threshold:.5});
+  bObs.observe(bar);
+});
+ 
+// ── NAV ACTIVE ────────────────────────────────────────────────
+const SECS=['entrance','about','projects','skills','experience','contact'];
+window.addEventListener('scroll',()=>{
+  let cur='entrance';
+  SECS.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-180)cur=id;});
+  document.querySelectorAll('.nav-a').forEach((a,i)=>{a.classList.toggle('on',SECS[i]===cur);});
+},{passive:true});
+ 
+function goto(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+ 
+// ── PROJECT MODAL ─────────────────────────────────────────────
+function openProj(i){
+  const p=PROJECTS[i];
+  document.getElementById('m-lbl').textContent='PROJECT // '+p.id+' · '+p.cat;
+  document.getElementById('m-title').textContent=p.title;
+  document.getElementById('m-icon').textContent=p.icon;
+  document.getElementById('m-prob').textContent=p.prob;
+  document.getElementById('m-approach').textContent=p.approach;
+  document.getElementById('m-outcome').textContent=p.outcome;
+ 
+  const chips=document.getElementById('m-chips');
+  chips.innerHTML=''; p.chips.forEach(c=>{const s=document.createElement('span');s.className='m-chip';s.textContent=c;chips.appendChild(s);});
+ 
+  const nav=document.getElementById('m-nav');
+  nav.innerHTML='';
+  const media=document.getElementById('m-media');
+  media.innerHTML='';
+  (p.media||[{type:'ph',label:'Add media'}]).forEach((m,mi)=>{
+    if(m.type==='image'){const img=document.createElement('img');img.src=m.src;if(mi===0)img.className='show';media.appendChild(img);}
+    else if(m.type==='video'){const v=document.createElement('video');v.src=m.src;v.controls=true;v.muted=true;if(mi===0)v.className='show';media.appendChild(v);}
+    else{const ph=document.createElement('div');ph.className='media-ph';ph.innerHTML='<span>'+p.icon+'</span>'+m.label+'<br><small style="color:var(--dim);font-family:var(--mono);font-size:9px;letter-spacing:1px">src/images/ — see VS Code guide below</small>';if(mi===0)media.appendChild(ph);}
+    if((p.media||[]).length>1){const d=document.createElement('div');d.className='mn-dot'+(mi===0?' on':'');d.onclick=()=>switchMedia(mi,p.media);nav.appendChild(d);}
+  });
+ 
+  const links=document.getElementById('m-links');
+  links.innerHTML='';
+  (p.links||[]).forEach(l=>{const a=document.createElement('a');a.className='m-link';a.href=l.url;a.target='_blank';a.textContent=l.label;links.appendChild(a);});
+ 
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+ 
+function switchMedia(idx, mediaArr){
+  const med=document.getElementById('m-media');
+  [...med.children].forEach((c,i)=>{c.style.display=i===idx?'':'none';if(c.className)c.className=i===idx?'show':'';});
+  [...document.getElementById('m-nav').children].forEach((d,i)=>d.className='mn-dot'+(i===idx?' on':''));
+}
+ 
+function closeProj(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal'))closeProj();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProj();});
+</script>
+</body>
+</html>
+ 
+
