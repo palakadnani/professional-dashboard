@@ -10,31 +10,18 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#070b10;
-  --surf:#0c1219;
-  --surf2:#111820;
-  --cyan:#00c8e8;
-  --cyan2:rgba(0,200,232,0.5);
-  --amber:#e8a020;
-  --white:#f0f4f8;
-  --dim:rgba(160,200,220,0.55);
-  --border:rgba(0,200,232,0.14);
-  --border2:rgba(0,200,232,0.28);
-  --grotesk:'Space Grotesk',system-ui,sans-serif;
-  --mono:'JetBrains Mono',monospace;
-  --ease:cubic-bezier(.16,1,.3,1);
+  --bg:#070b10;--surf:#0c1219;--surf2:#111820;--cyan:#00c8e8;
+  --cyan2:rgba(0,200,232,0.5);--amber:#e8a020;--white:#f0f4f8;
+  --dim:rgba(160,200,220,0.55);--border:rgba(0,200,232,0.14);
+  --border2:rgba(0,200,232,0.28);--grotesk:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;--ease:cubic-bezier(.16,1,.3,1);
 }
 html{font-size:16px;scroll-behavior:smooth}
 body{background:var(--bg);color:var(--white);font-family:var(--grotesk);overflow-x:hidden;}
 #c{position:fixed;inset:0;z-index:0;pointer-events:none;}
 #app{position:relative;z-index:10}
-#nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  height:56px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 5vw;background:rgba(7,11,16,0.75);
-  backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .3s;
-}
-.nav-logo{font-family:var(--grotesk);font-weight:700;font-size:15px;letter-spacing:-.3px;color:var(--white);}
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(7,11,16,0.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--grotesk);font-weight:700;font-size:15px;color:var(--white);}
 .nav-logo em{color:var(--cyan);font-style:normal}
 .nav-links{display:flex;gap:28px}
 .nav-a{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);background:none;border:none;cursor:pointer;transition:color .2s;padding:4px 0;}
@@ -45,7 +32,6 @@ body{background:var(--bg);color:var(--white);font-family:var(--grotesk);overflow
 .sec{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 6vw 60px;position:relative;}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .rv.in{opacity:1;transform:none}
-.glass{background:rgba(12,18,25,0.82);border:1px solid var(--border);backdrop-filter:blur(24px);}
 .lbl{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;display:block;}
 .sh{font-size:clamp(28px,4.5vw,52px);font-weight:700;letter-spacing:-.8px;color:var(--white);line-height:1.1;margin-bottom:12px;}
 .sh span{color:var(--cyan)}
@@ -150,16 +136,12 @@ body{background:var(--bg);color:var(--white);font-family:var(--grotesk);overflow
 .term{max-width:640px;width:100%;background:rgba(7,11,16,.97);border:1px solid var(--border2);overflow:hidden;text-align:left;}
 .term-bar{height:34px;background:rgba(0,200,232,.04);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 14px;gap:7px;}
 .td{width:10px;height:10px;border-radius:50%}
-.td:nth-child(1){background:#ff5f57}
-.td:nth-child(2){background:#febc2e}
-.td:nth-child(3){background:#28c840}
+.td:nth-child(1){background:#ff5f57}.td:nth-child(2){background:#febc2e}.td:nth-child(3){background:#28c840}
 .term-ti{flex:1;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--dim)}
 .term-body{padding:28px 28px 32px}
 .tl2{font-family:var(--mono);font-size:12px;color:var(--dim);line-height:2.1}
-.tp{color:var(--cyan);margin-right:6px}
-.tv{color:var(--white)}
-.ta{color:var(--cyan);text-decoration:none}
-.ta:hover{text-decoration:underline}
+.tp{color:var(--cyan);margin-right:6px}.tv{color:var(--white)}
+.ta{color:var(--cyan);text-decoration:none}.ta:hover{text-decoration:underline}
 .cur{display:inline-block;width:7px;height:13px;background:var(--cyan);vertical-align:middle;margin-left:3px;animation:bc 1.1s step-end infinite}
 @keyframes bc{50%{opacity:0}}
 .contact-btns{display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap}
@@ -182,8 +164,6 @@ body{background:var(--bg);color:var(--white);font-family:var(--grotesk);overflow
 .modal-media .media-ph{width:100%;height:100%;display:none;align-items:center;justify-content:center;flex-direction:column;gap:8px}
 .media-ph-inner{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--dim);text-align:center}
 .media-ph-inner span{display:block;font-size:28px;margin-bottom:8px}
-
-/* MEDIA NAV — arrows + dots */
 .media-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px;min-height:32px;}
 .media-dots{display:flex;gap:6px;align-items:center}
 .mn-dot{width:14px;height:2px;background:var(--border2);cursor:pointer;transition:background .2s,width .2s;border:none;padding:0;}
@@ -192,7 +172,6 @@ body{background:var(--bg);color:var(--white);font-family:var(--grotesk);overflow
 .media-arrow:hover{background:rgba(0,200,232,.08);border-color:var(--cyan)}
 .media-arrow:disabled{opacity:.25;cursor:default;pointer-events:none}
 .media-counter{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--dim);white-space:nowrap}
-
 .m-sec{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin:20px 0 8px;border-left:2px solid var(--cyan);padding-left:10px}
 .m-txt{font-size:13px;color:var(--dim);line-height:1.75}
 .m-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
@@ -260,9 +239,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
 
 <section class="sec" id="about">
   <div class="arc-wrap rv">
-    <div class="arc-r"></div>
-    <div class="arc-r"></div>
-    <div class="arc-r"></div>
+    <div class="arc-r"></div><div class="arc-r"></div><div class="arc-r"></div>
     <div class="arc-c">ARC<br>CORE<br>ACTIVE</div>
   </div>
   <div class="about-r">
@@ -274,14 +251,10 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
       <div class="edu-sub">B.Eng. Engineering Product Development · Computer Science Minor · Sep 2024 – Present</div>
       <div class="edu-detail">Relevant Coursework:</div>
       <div class="course-chips">
-        <span class="chip">Circuits &amp; Electronics</span>
-        <span class="chip">Systems &amp; Control</span>
-        <span class="chip">Computational Engineering</span>
-        <span class="chip">Design Engineering</span>
-        <span class="chip">Structures &amp; Materials</span>
-        <span class="chip">Electromagnetics</span>
-        <span class="chip">Data-Driven World</span>
-        <span class="chip">Modelling &amp; Analysis</span>
+        <span class="chip">Circuits &amp; Electronics</span><span class="chip">Systems &amp; Control</span>
+        <span class="chip">Computational Engineering</span><span class="chip">Design Engineering</span>
+        <span class="chip">Structures &amp; Materials</span><span class="chip">Electromagnetics</span>
+        <span class="chip">Data-Driven World</span><span class="chip">Modelling &amp; Analysis</span>
       </div>
     </div>
     <div class="edu-card rv" style="margin-top:12px">
@@ -297,114 +270,73 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
     <h2 class="sh rv">Projects</h2>
     <p class="sd rv">Each project below is a real prototype built from scratch. Click any card to open the engineering brief.</p>
     <div class="proj-table rv">
-
       <div class="proj-card" onclick="openProj(0)">
-        <div class="proj-num">PROJECT // 001</div>
-        <span class="proj-icon">👁️</span>
+        <div class="proj-num">PROJECT // 001</div><span class="proj-icon">👁️</span>
         <div class="proj-cat">Robotics · Computer Vision · AI</div>
         <div class="proj-title">IRIS — Intelligent Radar for Inclusive Sports</div>
-        <p class="proj-blurb">Wearable assistive device for visually impaired football players using haptic feedback, Raspberry Pi camera systems, and YOLO-based computer vision for player and ball detection.</p>
-        <div class="proj-chips">
-          <span class="proj-chip">Raspberry Pi</span><span class="proj-chip">OpenCV</span>
-          <span class="proj-chip">YOLO</span><span class="proj-chip">PyTorch</span><span class="proj-chip">Python</span>
-        </div>
+        <p class="proj-blurb">Wearable assistive device for visually impaired football players using haptic feedback, Raspberry Pi camera systems, and YOLO-based computer vision.</p>
+        <div class="proj-chips"><span class="proj-chip">Raspberry Pi</span><span class="proj-chip">OpenCV</span><span class="proj-chip">YOLO</span><span class="proj-chip">PyTorch</span><span class="proj-chip">Python</span></div>
         <div class="proj-arr">→</div>
       </div>
-
       <div class="proj-card" onclick="openProj(1)">
-        <div class="proj-num">PROJECT // 002</div>
-        <span class="proj-icon">🦾</span>
+        <div class="proj-num">PROJECT // 002</div><span class="proj-icon">🦾</span>
         <div class="proj-cat">Robotics · Mechanical Design</div>
         <div class="proj-title">Jeeno — Assistive Feeding Robotic Arm</div>
-        <p class="proj-blurb">A human-centred 6-DOF robotic feeding assistant designed to improve independence for users with motor difficulties. Focus on mechanical prototyping, actuation, and electronics integration.</p>
-        <div class="proj-chips">
-          <span class="proj-chip">Fusion 360</span><span class="proj-chip">CAD</span>
-          <span class="proj-chip">Embedded Systems</span><span class="proj-chip">Servo Control</span>
-        </div>
+        <p class="proj-blurb">A human-centred 6-DOF robotic feeding assistant designed to improve independence for users with motor difficulties.</p>
+        <div class="proj-chips"><span class="proj-chip">Fusion 360</span><span class="proj-chip">CAD</span><span class="proj-chip">Embedded Systems</span><span class="proj-chip">Servo Control</span></div>
         <div class="proj-arr">→</div>
       </div>
-
       <div class="proj-card" onclick="openProj(2)">
-        <div class="proj-num">PROJECT // 003</div>
-        <span class="proj-icon">🏖️</span>
+        <div class="proj-num">PROJECT // 003</div><span class="proj-icon">🏖️</span>
         <div class="proj-cat">Embedded Systems · Sustainability</div>
         <div class="proj-title">SeaSoar — Beach Cleaning Robot</div>
         <p class="proj-blurb">ESP32-based motor control system powering six motors with remote operation. Won the Jyoti &amp; Aditya Mathur Sustainability Award.</p>
-        <div class="proj-chips">
-          <span class="proj-chip">ESP32</span><span class="proj-chip">Motor Control</span>
-          <span class="proj-chip">CAD</span><span class="proj-chip">Electronics</span>
-        </div>
+        <div class="proj-chips"><span class="proj-chip">ESP32</span><span class="proj-chip">Motor Control</span><span class="proj-chip">CAD</span><span class="proj-chip">Electronics</span></div>
         <div class="award-badge">🏆 Sustainability Award</div>
         <div class="proj-arr">→</div>
       </div>
-
       <div class="proj-card" onclick="openProj(3)">
-        <div class="proj-num">PROJECT // 004</div>
-        <span class="proj-icon">🌊</span>
+        <div class="proj-num">PROJECT // 004</div><span class="proj-icon">🌊</span>
         <div class="proj-cat">Robotics · Mechanical Design</div>
         <div class="proj-title">Underwater Robot — ESC Tube (UWU Club)</div>
-        <p class="proj-blurb">Designing the internal electronics layout for an underwater robot ESC tube — considering waterproofing, component placement, and weight distribution.</p>
-        <div class="proj-chips">
-          <span class="proj-chip">CAD</span><span class="proj-chip">Electronics Integration</span>
-          <span class="proj-chip">Mechanical Design</span>
-        </div>
+        <p class="proj-blurb">Designing internal electronics layout for an underwater robot ESC tube — waterproofing, component placement, and weight distribution.</p>
+        <div class="proj-chips"><span class="proj-chip">CAD</span><span class="proj-chip">Electronics Integration</span><span class="proj-chip">Mechanical Design</span></div>
         <div class="proj-arr">→</div>
       </div>
-
       <div class="proj-card" onclick="openProj(4)">
-        <div class="proj-num">PROJECT // 005</div>
-        <span class="proj-icon">🆘</span>
+        <div class="proj-num">PROJECT // 005</div><span class="proj-icon">🆘</span>
         <div class="proj-cat">Robotics · Safety Systems · Embedded</div>
         <div class="proj-title">D.O.R.I — Drowning Onset Rescue Instrument</div>
-        <p class="proj-blurb">Designing a rescue mechanism and integrated mechanical-electrical systems for reliable deployment to unconscious or unresponsive drowning victims. SUTD 30.007.</p>
-        <div class="proj-chips">
-          <span class="proj-chip">CAD</span><span class="proj-chip">Robotics</span>
-          <span class="proj-chip">Embedded Systems</span>
-        </div>
+        <p class="proj-blurb">Designing a rescue mechanism and integrated mechanical-electrical systems for reliable deployment to unconscious drowning victims. SUTD 30.007.</p>
+        <div class="proj-chips"><span class="proj-chip">CAD</span><span class="proj-chip">Robotics</span><span class="proj-chip">Embedded Systems</span></div>
         <div class="proj-arr">→</div>
       </div>
-
       <div class="proj-card" onclick="openProj(5)">
-        <div class="proj-num">PROJECT // 006</div>
-        <span class="proj-icon">☀️</span>
+        <div class="proj-num">PROJECT // 006</div><span class="proj-icon">☀️</span>
         <div class="proj-cat">Renewable Energy · Field Engineering</div>
         <div class="proj-title">Off-Grid PV Solar Installation — Indonesia</div>
         <p class="proj-blurb">Designed and installed a complete off-grid photovoltaic system powering a water pump in a rural Indonesian village. Won Best Team Award.</p>
-        <div class="proj-chips">
-          <span class="proj-chip">Site Analysis</span><span class="proj-chip">Circuit Assembly</span>
-          <span class="proj-chip">Battery Sizing</span><span class="proj-chip">Solar</span>
-        </div>
+        <div class="proj-chips"><span class="proj-chip">Site Analysis</span><span class="proj-chip">Circuit Assembly</span><span class="proj-chip">Battery Sizing</span><span class="proj-chip">Solar</span></div>
         <div class="award-badge">🏆 Best Team Award</div>
         <div class="proj-arr">→</div>
       </div>
-
       <div class="proj-card" onclick="openProj(6)">
-        <div class="proj-num">PROJECT // 007</div>
-        <span class="proj-icon">🤖</span>
+        <div class="proj-num">PROJECT // 007</div><span class="proj-icon">🤖</span>
         <div class="proj-cat">Robotics · Competition</div>
         <div class="proj-title">First Tech Challenge — Team LabFusion</div>
-        <p class="proj-blurb">Developed robot control, sensor integration, and mechanism assembly for object detection, colour identification, and hanging tasks. Team awarded the Control Award.</p>
-        <div class="proj-chips">
-          <span class="proj-chip">Sensor Integration</span><span class="proj-chip">Robot Control</span>
-          <span class="proj-chip">Mechanism Design</span><span class="proj-chip">FTC</span>
-        </div>
+        <p class="proj-blurb">Robot control, sensor integration, and mechanism assembly for object detection and hanging tasks. Team awarded the Control Award.</p>
+        <div class="proj-chips"><span class="proj-chip">Sensor Integration</span><span class="proj-chip">Robot Control</span><span class="proj-chip">Mechanism Design</span></div>
         <div class="award-badge">🏆 Control Award</div>
         <div class="proj-arr">→</div>
       </div>
-
       <div class="proj-card" onclick="openProj(7)">
-        <div class="proj-num">PROJECT // 008</div>
-        <span class="proj-icon">🎨</span>
+        <div class="proj-num">PROJECT // 008</div><span class="proj-icon">🎨</span>
         <div class="proj-cat">Software · Hardware · Fabrication</div>
         <div class="proj-title">Colour-Mixing Automation — Moxin Technology</div>
-        <p class="proj-blurb">Colour-mixing automation system integrating mechanical mechanisms, digital fabrication, and embedded hardware. Extended Hanyuan 3D workflow via Blender-based image-to-STL generation.</p>
-        <div class="proj-chips">
-          <span class="proj-chip">Blender</span><span class="proj-chip">Python</span>
-          <span class="proj-chip">Stepper Motors</span><span class="proj-chip">PCB Design</span>
-        </div>
+        <p class="proj-blurb">Colour-mixing automation system integrating mechanical mechanisms, digital fabrication, and embedded hardware. Blender-based image-to-STL generation.</p>
+        <div class="proj-chips"><span class="proj-chip">Blender</span><span class="proj-chip">Python</span><span class="proj-chip">Stepper Motors</span><span class="proj-chip">PCB Design</span></div>
         <div class="proj-arr">→</div>
       </div>
-
     </div>
   </div>
 </section>
@@ -448,16 +380,11 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
     <div class="skill-extra rv">
       <div class="se-title">Also experienced with</div>
       <div class="se-chips">
-        <span class="se-chip">System Integration</span>
-        <span class="se-chip">Rapid Prototyping</span>
-        <span class="se-chip">Circuit Design</span>
-        <span class="se-chip">Human-Centred Design</span>
-        <span class="se-chip">Blender</span>
-        <span class="se-chip">Stepper Motors</span>
-        <span class="se-chip">Haptic Feedback Systems</span>
-        <span class="se-chip">STL Generation</span>
-        <span class="se-chip">Battery Sizing</span>
-        <span class="se-chip">Solar Charge Controllers</span>
+        <span class="se-chip">System Integration</span><span class="se-chip">Rapid Prototyping</span>
+        <span class="se-chip">Circuit Design</span><span class="se-chip">Human-Centred Design</span>
+        <span class="se-chip">Blender</span><span class="se-chip">Stepper Motors</span>
+        <span class="se-chip">Haptic Feedback Systems</span><span class="se-chip">STL Generation</span>
+        <span class="se-chip">Battery Sizing</span><span class="se-chip">Solar Charge Controllers</span>
       </div>
     </div>
   </div>
@@ -469,7 +396,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
     <h2 class="sh rv">Experience</h2>
     <p class="sd rv">A log of internships, teaching roles, competitions, and research missions.</p>
     <div class="tl">
-
       <div class="tl-item rv">
         <div class="tl-l"><div class="tl-dot">M01</div></div>
         <div class="tl-r">
@@ -484,7 +410,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
           <div class="tl-status s-active">Active</div>
         </div>
       </div>
-
       <div class="tl-item rv">
         <div class="tl-l"><div class="tl-dot">M02</div></div>
         <div class="tl-r">
@@ -497,7 +422,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
           <div class="tl-status s-active">Active</div>
         </div>
       </div>
-
       <div class="tl-item rv">
         <div class="tl-l"><div class="tl-dot">M03</div></div>
         <div class="tl-r">
@@ -512,7 +436,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
           <div class="tl-status s-done">Completed · 🏆 Best Team Award</div>
         </div>
       </div>
-
       <div class="tl-item rv">
         <div class="tl-l"><div class="tl-dot">M04</div></div>
         <div class="tl-r">
@@ -526,7 +449,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
           <div class="tl-status s-active">Active</div>
         </div>
       </div>
-
       <div class="tl-item rv">
         <div class="tl-l"><div class="tl-dot">M05</div></div>
         <div class="tl-r">
@@ -540,7 +462,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
           <div class="tl-status s-done">Completed · 🏆 Control Award</div>
         </div>
       </div>
-
     </div>
     <div class="div rv"></div>
     <span class="lbl rv">// Beyond the Lab</span>
@@ -584,7 +505,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
     </div>
   </div>
 </section>
-
 </div>
 
 <footer>
@@ -592,7 +512,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
   <span style="color:var(--dim)">palak_adnani@mymail.sutd.edu.sg</span>
 </footer>
 
-<!-- MODAL -->
 <div id="modal">
   <div class="modal-inner">
     <div class="modal-head">
@@ -618,521 +537,371 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;back
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-// ── PROJECT DATA ──────────────────────────────────────────────
-const PROJECTS = [
-  {
-    id:'001', title:'IRIS — Intelligent Radar for Inclusive Sports', icon:'👁️',
-    cat:'Robotics · Computer Vision · AI',
-    prob:'Visually impaired athletes have virtually no assistive technology designed for dynamic team sports like football. Existing solutions are too slow, too bulky, or fail in real-time environments.',
-    approach:'Integrated a Raspberry Pi camera system with YOLO-based object detection to identify players and the ball in real time. Haptic feedback modules on a wearable band translate detected object positions into spatial vibration patterns the player can interpret intuitively. All inference runs on-device for sub-100ms latency.',
-    outcome:'Functional prototype demonstrated at SUTD × ST Engineering showcase. YOLO model fine-tuned on custom football dataset achieving >85% detection accuracy in field conditions.',
-    chips:['Raspberry Pi','OpenCV','YOLO','PyTorch','Python','Haptic Actuators','Computer Vision'],
-    media:[
-      {type:'image', src:'iris-group.jpeg'},
-      {type:'video', src:'iris-demo.mp4'}
-    ],
-    links:[{label:'GitHub', url:'https://github.com/palakadnani/IRIS--Project'}]
-  },
-  {
-    id:'002', title:'Jeeno — Assistive Feeding Robotic Arm', icon:'🦾',
-    cat:'Robotics · Mechanical Design · Human-Centred',
-    prob:'People with motor difficulties such as those caused by cerebral palsy, MS, or stroke often rely entirely on caregivers for feeding — affecting dignity and independence.',
-    approach:'Designing a 6-DOF robotic arm in Fusion 360 with a human-centred form factor. The arm uses servo actuators with position feedback and is designed for tabletop mounting. Electronics integration includes microcontroller-based motion planning and safety cutoffs.',
-    outcome:'Mechanical prototype in progress. CAD assembly complete with 6 degrees of freedom. Electronics integration underway with actuation testing phase beginning.',
-    chips:['Fusion 360','CAD','Servo Motors','Embedded Systems','Mechanical Design','Human-Centred Design'],
-    media:[
-      {type:'image', src:'Jeeno-claw.JPG'}
-    ],
-    links:[]
-  },
-  {
-    id:'003', title:'SeaSoar — Beach Cleaning Robot', icon:'🏖️',
-    cat:'Embedded Systems · Sustainability · Robotics',
-    prob:'Beach litter accumulates faster than manual volunteer efforts can address. There is a need for a cost-effective, remotely operated platform that can assist with debris collection.',
-    approach:'Built an ESP32-based control system driving six DC motors for a skid-steer beach robot. Designed custom motor driver circuits and implemented remote operation over WiFi. Mechanical chassis fabricated and iteratively tested on sand terrain.',
-    outcome:'Fully operational remote-controlled robot demonstrated on a beach environment. Won the Jyoti and Aditya Mathur Sustainability Award at SUTD.',
-    chips:['ESP32','Motor Control','C++','CAD','Soldering','Wiring','Electronics'],
-    media:[
-      {type:'image', src:'SeaSoar-news.jpeg'},
-      {type:'image', src:'SeaSoar-award.jpeg'},
-      {type:'image', src:'SeaSoar-award2.jpeg'},
-      {type:'image', src:'SeaSoar-circuit.jpeg'},
-      {type:'image', src:'SeaSoar-team.jpeg'}
-    ],
-    links:[]
-  },
-  {
-    id:'004', title:'Underwater Robot — ESC Tube (UWU Club)', icon:'🌊',
-    cat:'Robotics · Waterproofing · Electronics',
-    prob:'Electronic speed controllers in underwater robots are extremely vulnerable to water ingress. The layout of an ESC tube must balance waterproofing integrity, heat dissipation, weight, and accessibility for maintenance.',
-    approach:'Designing the full internal electronics layout for the ESC tube including component placement strategy for weight distribution, potting compound selection for waterproofing, connector routing, and thermal management.',
-    outcome:'Design phase ongoing. CAD layout complete, component procurement underway for fabrication.',
-    chips:['CAD','Electronics Integration','Mechanical Design','Waterproofing','Weight Distribution'],
-    media:[],
-    links:[]
-  },
-  {
-    id:'005', title:'D.O.R.I — Drowning Onset Rescue Instrument', icon:'🆘',
-    cat:'Robotics · Safety Systems · Embedded',
-    prob:'Drowning is fast and silent. Lifeguards face dangerous, time-critical rescues, especially for unconscious victims. Existing throw-rings are passive and require the victim to hold on.',
-    approach:'Designing an autonomous rescue deployment mechanism that can be thrown to a victim and mechanically secure them. Integrated mechanical-electrical systems must operate reliably in water, detect victim contact, and provide buoyancy. Part of SUTD 30.007.',
-    outcome:'Active design and prototyping phase. Rescue mechanism concept validated, integrated CAD and electronics schematic in progress.',
-    chips:['CAD','Robotics','Embedded Systems','Mechanism Design','Electronics','Safety Systems'],
-    media:[],
-    links:[]
-  },
-  {
-    id:'006', title:'Off-Grid PV Solar Installation — Indonesia', icon:'☀️',
-    cat:'Renewable Energy · Field Engineering',
-    prob:'A rural village in Indonesia lacked access to electricity for their water pump. Grid connection was impractical. A reliable, maintainable off-grid solar solution was needed with a minimal budget.',
-    approach:'As part of a student-faculty team (UGM Global Experiential Opportunity), performed site analysis, designed the system architecture, sized the battery bank for daily load requirements, wired the solar array, integrated the charge controller, and commissioned the full system on-site.',
-    outcome:'System successfully installed and operational. Water pump powered reliably. Team received the Best Team Award.',
-    chips:['Site Analysis','Circuit Assembly','Battery Sizing','Solar Charge Controller','Wiring','Team Leadership'],
-    media:[
-      {type:'image', src:'PV-circuit.jpeg'},
-      {type:'image', src:'PV-site.jpeg'},
-      {type:'image', src:'PV-team.jpeg'}
-    ],
-    links:[]
-  },
-  {
-    id:'007', title:'First Tech Challenge — Team LabFusion', icon:'🤖',
-    cat:'Robotics · Competition · Sensor Integration',
-    prob:'The FTC Centrestage challenge required robots to detect, pick up, and place game elements using object detection, and complete complex tasks including hanging mechanisms under time pressure.',
-    approach:'Contributed to robot control software, sensor integration (colour and distance sensors), and mechanical assembly. Implemented object detection pipeline for colour identification and developed reliable actuator control for hanging mechanisms.',
-    outcome:'Team LabFusion awarded the Control Award for outstanding sensor control integration at the regional competition.',
-    chips:['Robot Control','Sensor Integration','Colour Detection','Mechanism Assembly','Competition Robotics'],
-    media:[
-      {type:'image', src:'ftc-robot.jpeg'},
-      {type:'image', src:'ftc-team.jpeg'}
-    ],
-    links:[]
-  },
-  {
-    id:'008', title:'Colour-Mixing Automation — Moxin Technology', icon:'🎨',
-    cat:'Hardware · Software · Digital Fabrication',
-    prob:'Manual colour mixing in Moxin\'s production workflow was inconsistent and time-consuming. A repeatable, automated solution was needed that integrated with their existing digital fabrication pipeline.',
-    approach:'Designed and built a colour-mixing automation system combining stepper motor-driven dispensing mechanisms, custom electronics, and software control. Also extended the Hanyuan 3D workflow by developing a Blender-based pipeline to convert product images to STL for customisation.',
-    outcome:'Automation system operational and taken forward as a Baby Shark product line. Blender-to-STL pipeline integrated into production workflow.',
-    chips:['Blender','Python','Stepper Motors','Electronics','PCB Design','CAD','Digital Fabrication'],
-    media:[
-      {type:'image', src:'image-stl.jpeg'},
-      {type:'image', src:'moxin-team.jpeg'}
-    ],
-    links:[]
-  }
+const PROJECTS=[
+  {id:'001',title:'IRIS — Intelligent Radar for Inclusive Sports',icon:'👁️',cat:'Robotics · Computer Vision · AI',
+  prob:'Visually impaired athletes have virtually no assistive technology designed for dynamic team sports like football. Existing solutions are too slow, too bulky, or fail in real-time environments.',
+  approach:'Integrated a Raspberry Pi camera system with YOLO-based object detection to identify players and the ball in real time. Haptic feedback modules on a wearable band translate detected object positions into spatial vibration patterns the player can interpret intuitively. All inference runs on-device for sub-100ms latency.',
+  outcome:'Functional prototype demonstrated at SUTD × ST Engineering showcase. YOLO model fine-tuned on custom football dataset achieving >85% detection accuracy in field conditions.',
+  chips:['Raspberry Pi','OpenCV','YOLO','PyTorch','Python','Haptic Actuators','Computer Vision'],
+  media:[{type:'image',src:'iris-group.jpeg'},{type:'video',src:'iris-demo.mp4'}],
+  links:[{label:'GitHub',url:'https://github.com/palakadnani/IRIS--Project'}]},
+
+  {id:'002',title:'Jeeno — Assistive Feeding Robotic Arm',icon:'🦾',cat:'Robotics · Mechanical Design · Human-Centred',
+  prob:'People with motor difficulties often rely entirely on caregivers for feeding — affecting dignity and independence.',
+  approach:'Designing a 6-DOF robotic arm in Fusion 360 with a human-centred form factor. The arm uses servo actuators with position feedback and is designed for tabletop mounting. Electronics integration includes microcontroller-based motion planning and safety cutoffs.',
+  outcome:'Mechanical prototype in progress. CAD assembly complete with 6 degrees of freedom. Electronics integration underway with actuation testing phase beginning.',
+  chips:['Fusion 360','CAD','Servo Motors','Embedded Systems','Mechanical Design','Human-Centred Design'],
+  media:[{type:'image',src:'Jeeno-claw.JPG'}],links:[]},
+
+  {id:'003',title:'SeaSoar — Beach Cleaning Robot',icon:'🏖️',cat:'Embedded Systems · Sustainability · Robotics',
+  prob:'Beach litter accumulates faster than manual volunteer efforts can address. A cost-effective, remotely operated platform is needed.',
+  approach:'Built an ESP32-based control system driving six DC motors for a skid-steer beach robot. Designed custom motor driver circuits and implemented remote operation over WiFi. Mechanical chassis fabricated and iteratively tested on sand terrain.',
+  outcome:'Fully operational remote-controlled robot demonstrated on a beach environment. Won the Jyoti and Aditya Mathur Sustainability Award at SUTD.',
+  chips:['ESP32','Motor Control','C++','CAD','Soldering','Wiring','Electronics'],
+  media:[{type:'image',src:'SeaSoar-news.jpeg'},{type:'image',src:'SeaSoar-award.jpeg'},{type:'image',src:'SeaSoar-award2.jpeg'},{type:'image',src:'SeaSoar-circuit.jpeg'},{type:'image',src:'SeaSoar-team.jpeg'}],
+  links:[]},
+
+  {id:'004',title:'Underwater Robot — ESC Tube (UWU Club)',icon:'🌊',cat:'Robotics · Waterproofing · Electronics',
+  prob:'ESCs in underwater robots are extremely vulnerable to water ingress. Layout must balance waterproofing, heat dissipation, weight, and accessibility.',
+  approach:'Designing the full internal electronics layout for the ESC tube including component placement for weight distribution, potting compound selection for waterproofing, connector routing, and thermal management.',
+  outcome:'Design phase ongoing. CAD layout complete, component procurement underway for fabrication.',
+  chips:['CAD','Electronics Integration','Mechanical Design','Waterproofing','Weight Distribution'],
+  media:[],links:[]},
+
+  {id:'005',title:'D.O.R.I — Drowning Onset Rescue Instrument',icon:'🆘',cat:'Robotics · Safety Systems · Embedded',
+  prob:'Drowning is fast and silent. Existing throw-rings are passive and require the victim to hold on — ineffective for unconscious victims.',
+  approach:'Designing an autonomous rescue deployment mechanism that can be thrown to a victim and mechanically secure them. Integrated mechanical-electrical systems must operate reliably in water. Part of SUTD 30.007.',
+  outcome:'Active design and prototyping phase. Rescue mechanism concept validated, integrated CAD and electronics schematic in progress.',
+  chips:['CAD','Robotics','Embedded Systems','Mechanism Design','Electronics','Safety Systems'],
+  media:[],links:[]},
+
+  {id:'006',title:'Off-Grid PV Solar Installation — Indonesia',icon:'☀️',cat:'Renewable Energy · Field Engineering',
+  prob:'A rural Indonesian village lacked electricity for their water pump. Grid connection was impractical and a reliable off-grid solution was needed.',
+  approach:'As part of a student-faculty team, performed site analysis, designed the system architecture, sized the battery bank, wired the solar array, integrated the charge controller, and commissioned the full system on-site.',
+  outcome:'System successfully installed and operational. Water pump powered reliably. Team received the Best Team Award.',
+  chips:['Site Analysis','Circuit Assembly','Battery Sizing','Solar Charge Controller','Wiring','Team Leadership'],
+  media:[{type:'image',src:'PV-circuit.jpeg'},{type:'image',src:'PV-site.jpeg'},{type:'image',src:'PV-team.jpeg'}],
+  links:[]},
+
+  {id:'007',title:'First Tech Challenge — Team LabFusion',icon:'🤖',cat:'Robotics · Competition · Sensor Integration',
+  prob:'FTC Centrestage required robots to detect, pick up, and place game elements using object detection, plus complete hanging mechanisms under time pressure.',
+  approach:'Contributed to robot control software, sensor integration (colour and distance sensors), and mechanical assembly. Implemented object detection pipeline for colour identification and reliable actuator control for hanging.',
+  outcome:'Team LabFusion awarded the Control Award for outstanding sensor control integration at the regional competition.',
+  chips:['Robot Control','Sensor Integration','Colour Detection','Mechanism Assembly','Competition Robotics'],
+  media:[{type:'image',src:'ftc-robot.jpeg'},{type:'image',src:'ftc-team.jpeg'}],
+  links:[]},
+
+  {id:'008',title:'Colour-Mixing Automation — Moxin Technology',icon:'🎨',cat:'Hardware · Software · Digital Fabrication',
+  prob:"Manual colour mixing in Moxin's production workflow was inconsistent and time-consuming.",
+  approach:'Designed and built a colour-mixing automation system with stepper motor-driven dispensing mechanisms, custom electronics, and software control. Extended the Hanyuan 3D workflow with a Blender pipeline to convert product images to STL.',
+  outcome:'Automation system operational and taken forward as a Baby Shark product line. Blender-to-STL pipeline integrated into production workflow.',
+  chips:['Blender','Python','Stepper Motors','Electronics','PCB Design','CAD','Digital Fabrication'],
+  media:[{type:'image',src:'image-stl.jpeg'},{type:'image',src:'moxin-team.jpeg'}],
+  links:[]}
 ];
 
-// ── MODAL STATE ───────────────────────────────────────────────
-let curIdx = 0;
-let curMedia = [];
+// ── MODAL ─────────────────────────────────────────────────────
+let curIdx=0, curMedia=[];
 
-function stopAllVideos() {
-  document.querySelectorAll('#m-media video').forEach(v => { v.pause(); v.currentTime = 0; });
+function stopVideos(){
+  document.querySelectorAll('#m-media video').forEach(v=>{v.pause();v.currentTime=0;});
 }
 
-function showSlide(idx) {
-  curIdx = idx;
-  const container = document.getElementById('m-media');
-  const items = container.querySelectorAll('img, video, .media-ph');
-  items.forEach((el, i) => {
-    el.style.display = 'none';
-    if (i !== idx) {
-      if (el.tagName === 'VIDEO') { el.pause(); el.currentTime = 0; }
-    }
+function showSlide(idx){
+  curIdx=idx;
+  const c=document.getElementById('m-media');
+  const items=c.querySelectorAll('img,video,.media-ph');
+  items.forEach((el,i)=>{
+    el.style.display='none';
+    if(el.tagName==='VIDEO'&&i!==idx){el.pause();el.currentTime=0;}
   });
-  if (items[idx]) {
-    items[idx].style.display = items[idx].classList.contains('media-ph') ? 'flex' : 'block';
-  }
-  // Update dots
-  document.querySelectorAll('.mn-dot').forEach((d, i) => {
-    d.classList.toggle('on', i === idx);
-  });
-  // Update counter
-  const counter = document.getElementById('m-counter');
-  if (counter) counter.textContent = (idx + 1) + ' / ' + curMedia.length;
-  // Update arrow states
-  const prev = document.getElementById('m-prev');
-  const next = document.getElementById('m-next');
-  if (prev) prev.disabled = idx === 0;
-  if (next) next.disabled = idx === curMedia.length - 1;
+  if(items[idx]) items[idx].style.display=items[idx].classList.contains('media-ph')?'flex':'block';
+  document.querySelectorAll('.mn-dot').forEach((d,i)=>d.classList.toggle('on',i===idx));
+  const counter=document.getElementById('m-counter');
+  if(counter) counter.textContent=(idx+1)+' / '+curMedia.length;
+  const prev=document.getElementById('m-prev');
+  const next=document.getElementById('m-next');
+  if(prev) prev.disabled=idx===0;
+  if(next) next.disabled=idx===curMedia.length-1;
 }
 
-function openProj(i) {
-  stopAllVideos();
-  curIdx = 0;
-  const p = PROJECTS[i];
-  curMedia = p.media || [];
-
-  document.getElementById('m-lbl').textContent = 'PROJECT // ' + p.id + ' · ' + p.cat;
-  document.getElementById('m-title').textContent = p.title;
-  document.getElementById('m-prob').textContent = p.prob;
-  document.getElementById('m-approach').textContent = p.approach;
-  document.getElementById('m-outcome').textContent = p.outcome;
-
-  // Chips
-  const chips = document.getElementById('m-chips');
-  chips.innerHTML = '';
-  p.chips.forEach(c => {
-    const s = document.createElement('span');
-    s.className = 'm-chip'; s.textContent = c;
-    chips.appendChild(s);
-  });
-
-  // Build media container
-  const container = document.getElementById('m-media');
-  container.innerHTML = '';
-
-  if (curMedia.length === 0) {
-    const ph = document.createElement('div');
-    ph.className = 'media-ph';
-    ph.style.display = 'flex';
-    ph.innerHTML = '<div class="media-ph-inner"><span>' + p.icon + '</span>Photos coming soon</div>';
+function openProj(i){
+  stopVideos();
+  curIdx=0;
+  const p=PROJECTS[i];
+  curMedia=p.media||[];
+  document.getElementById('m-lbl').textContent='PROJECT // '+p.id+' · '+p.cat;
+  document.getElementById('m-title').textContent=p.title;
+  document.getElementById('m-prob').textContent=p.prob;
+  document.getElementById('m-approach').textContent=p.approach;
+  document.getElementById('m-outcome').textContent=p.outcome;
+  const chips=document.getElementById('m-chips');
+  chips.innerHTML='';
+  p.chips.forEach(c=>{const s=document.createElement('span');s.className='m-chip';s.textContent=c;chips.appendChild(s);});
+  const container=document.getElementById('m-media');
+  container.innerHTML='';
+  if(curMedia.length===0){
+    const ph=document.createElement('div');ph.className='media-ph';ph.style.display='flex';
+    ph.innerHTML='<div class="media-ph-inner"><span>'+p.icon+'</span>Photos coming soon</div>';
     container.appendChild(ph);
   } else {
-    curMedia.forEach((m, mi) => {
-      if (m.type === 'image') {
-        const img = document.createElement('img');
-        img.src = m.src;
-        img.style.display = mi === 0 ? 'block' : 'none';
-        container.appendChild(img);
-      } else if (m.type === 'video') {
-        const v = document.createElement('video');
-        v.src = m.src;
-        v.controls = true;
-        v.playsInline = true;
-        v.style.display = mi === 0 ? 'block' : 'none';
-        container.appendChild(v);
+    curMedia.forEach((m,mi)=>{
+      if(m.type==='image'){
+        const img=document.createElement('img');img.src=m.src;
+        img.style.display=mi===0?'block':'none';container.appendChild(img);
+      } else if(m.type==='video'){
+        const v=document.createElement('video');v.src=m.src;v.controls=true;v.playsInline=true;
+        v.style.display=mi===0?'block':'none';container.appendChild(v);
       }
     });
   }
-
-  // Build nav
-  const nav = document.getElementById('m-nav');
-  nav.innerHTML = '';
-  if (curMedia.length > 1) {
-    // Prev button
-    const prev = document.createElement('button');
-    prev.className = 'media-arrow'; prev.id = 'm-prev';
-    prev.textContent = '← Prev';
-    prev.disabled = true;
-    prev.onclick = () => showSlide(curIdx - 1);
-    nav.appendChild(prev);
-
-    // Dots
-    const dotsWrap = document.createElement('div');
-    dotsWrap.className = 'media-dots';
-    curMedia.forEach((_, mi) => {
-      const d = document.createElement('button');
-      d.className = 'mn-dot' + (mi === 0 ? ' on' : '');
-      d.onclick = () => showSlide(mi);
-      dotsWrap.appendChild(d);
+  const nav=document.getElementById('m-nav');
+  nav.innerHTML='';
+  if(curMedia.length>1){
+    const prev=document.createElement('button');prev.className='media-arrow';prev.id='m-prev';
+    prev.textContent='← Prev';prev.disabled=true;prev.onclick=()=>showSlide(curIdx-1);nav.appendChild(prev);
+    const dotsWrap=document.createElement('div');dotsWrap.className='media-dots';
+    curMedia.forEach((_,mi)=>{
+      const d=document.createElement('button');d.className='mn-dot'+(mi===0?' on':'');
+      d.onclick=()=>showSlide(mi);dotsWrap.appendChild(d);
     });
     nav.appendChild(dotsWrap);
-
-    // Counter
-    const counter = document.createElement('span');
-    counter.className = 'media-counter'; counter.id = 'm-counter';
-    counter.textContent = '1 / ' + curMedia.length;
-    nav.appendChild(counter);
-
-    // Next button
-    const next = document.createElement('button');
-    next.className = 'media-arrow'; next.id = 'm-next';
-    next.textContent = 'Next →';
-    next.onclick = () => showSlide(curIdx + 1);
-    nav.appendChild(next);
+    const counter=document.createElement('span');counter.className='media-counter';counter.id='m-counter';
+    counter.textContent='1 / '+curMedia.length;nav.appendChild(counter);
+    const next=document.createElement('button');next.className='media-arrow';next.id='m-next';
+    next.textContent='Next →';next.onclick=()=>showSlide(curIdx+1);nav.appendChild(next);
   }
-
-  // Links
-  const links = document.getElementById('m-links');
-  links.innerHTML = '';
-  (p.links || []).forEach(l => {
-    const a = document.createElement('a');
-    a.className = 'm-link'; a.href = l.url;
-    a.target = '_blank'; a.textContent = l.label;
-    links.appendChild(a);
+  const links=document.getElementById('m-links');
+  links.innerHTML='';
+  (p.links||[]).forEach(l=>{
+    const a=document.createElement('a');a.className='m-link';a.href=l.url;a.target='_blank';a.textContent=l.label;links.appendChild(a);
   });
-
   document.getElementById('modal').classList.add('open');
-  document.querySelector('.modal-inner').scrollTop = 0;
-  document.body.style.overflow = 'hidden';
+  document.querySelector('.modal-inner').scrollTop=0;
+  document.body.style.overflow='hidden';
 }
 
-function closeProj() {
-  stopAllVideos();
+function closeProj(){
+  stopVideos();
   document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
 }
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal'))closeProj();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProj();});
 
-document.getElementById('modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('modal')) closeProj();
-});
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProj(); });
+// ── THREE.JS — wrapped in try/catch so content always shows ──
+try {
+  const canvas=document.getElementById('c');
+  const W=()=>window.innerWidth,H=()=>window.innerHeight;
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setSize(W(),H());
+  renderer.shadowMap.enabled=true;
+  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=0.75;
+  // NOTE: outputEncoding removed — caused crash on newer Three.js versions
 
-// ── THREE.JS SCENE ────────────────────────────────────────────
-const canvas = document.getElementById('c');
-const W = () => window.innerWidth, H = () => window.innerHeight;
-const renderer = new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-renderer.setSize(W(), H());
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 0.75;
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x05080d);
-scene.fog = new THREE.Fog(0x05080d, 18, 55);
-const cam = new THREE.PerspectiveCamera(52, W()/H(), 0.1, 100);
-cam.position.set(0, 2.8, 16);
-cam.lookAt(0, 1.5, 0);
-scene.add(new THREE.AmbientLight(0x08101a, 6));
-const key = new THREE.DirectionalLight(0xd0e8ff, 1.2);
-key.position.set(-6, 9, 4); key.castShadow = true;
-key.shadow.mapSize.set(2048, 2048);
-key.shadow.camera.near = 0.5; key.shadow.camera.far = 50;
-key.shadow.camera.left = -15; key.shadow.camera.right = 15;
-key.shadow.camera.top = 15; key.shadow.camera.bottom = -15;
-key.shadow.bias = -0.0005; scene.add(key);
-const fill = new THREE.DirectionalLight(0x8090c0, 0.4);
-fill.position.set(8, 5, 2); scene.add(fill);
-const rim = new THREE.DirectionalLight(0x2060a0, 0.6);
-rim.position.set(0, 8, -12); scene.add(rim);
-[[-5,0],[-2.5,0],[0,0],[2.5,0],[5,0],[-5,-8],[0,-8],[5,-8]].forEach(([x,z]) => {
-  const pl = new THREE.PointLight(0x0088bb, 0.55, 14);
-  pl.position.set(x, 6.2, z); scene.add(pl);
-});
-const bgGlow = new THREE.PointLight(0xb05a10, 0.6, 28);
-bgGlow.position.set(0, 3, -18); scene.add(bgGlow);
-const deskGlow = new THREE.PointLight(0x00aacc, 0.9, 10);
-deskGlow.position.set(0, 1.8, 1.5); scene.add(deskGlow);
-const mFloor = new THREE.MeshStandardMaterial({color:0x0a0d12,metalness:0.6,roughness:0.55});
-const mMetal = new THREE.MeshStandardMaterial({color:0x1a2028,metalness:0.92,roughness:0.18});
-const mMetalD = new THREE.MeshStandardMaterial({color:0x0c1018,metalness:0.88,roughness:0.25});
-const mWood = new THREE.MeshStandardMaterial({color:0x1c140a,metalness:0.05,roughness:0.82});
-const mWall = new THREE.MeshStandardMaterial({color:0x090d12,metalness:0.3,roughness:0.88});
-const mGlass = new THREE.MeshPhysicalMaterial({color:0x4080a0,metalness:0,roughness:0,transmission:0.85,transparent:true,opacity:0.15,side:THREE.DoubleSide});
-const mHolo = new THREE.MeshBasicMaterial({color:0x003850,transparent:true,opacity:0.78,side:THREE.DoubleSide});
-const mEdge = new THREE.LineBasicMaterial({color:0x00aacc,transparent:true,opacity:0.55});
-const mAmber = new THREE.MeshStandardMaterial({color:0xe8a020,metalness:0.4,roughness:0.5,emissive:0x704800,emissiveIntensity:0.3});
-const mCeil = new THREE.MeshStandardMaterial({color:0x070a0e,metalness:0.2,roughness:0.92});
-function mkEdges(geo, mat){return new THREE.LineSegments(new THREE.EdgesGeometry(geo), mat||mEdge)}
-const floor = new THREE.Mesh(new THREE.PlaneGeometry(30,60), mFloor);
-floor.rotation.x = -Math.PI/2; floor.position.y = -1.8; floor.receiveShadow = true; scene.add(floor);
-const grid = new THREE.GridHelper(30, 24, 0x0d1828, 0x07101a);
-grid.position.y = -1.79; scene.add(grid);
-const ceil = new THREE.Mesh(new THREE.PlaneGeometry(30,60), mCeil);
-ceil.rotation.x = Math.PI/2; ceil.position.y = 7.5; scene.add(ceil);
-const bWall = new THREE.Mesh(new THREE.PlaneGeometry(30,10), mWall);
-bWall.position.set(0, 3.2, -20); scene.add(bWall);
-const lWall = new THREE.Mesh(new THREE.PlaneGeometry(60,10), mWall);
-lWall.rotation.y = Math.PI/2; lWall.position.set(-13, 3.2, -10); scene.add(lWall);
-const rWall = new THREE.Mesh(new THREE.PlaneGeometry(60,10), mWall);
-rWall.rotation.y = -Math.PI/2; rWall.position.set(13, 3.2, -10); scene.add(rWall);
-function mkStrip(x, z, len=3.5){
-  const g = new THREE.Group();
-  const body = new THREE.Mesh(new THREE.BoxGeometry(len,0.06,0.2), mMetalD);
-  body.position.y = 7.48; g.add(body);
-  const glow = new THREE.Mesh(new THREE.BoxGeometry(len-0.1,0.02,0.16), new THREE.MeshBasicMaterial({color:0xbbeeff,transparent:true,opacity:0.9}));
-  glow.position.y = 7.49; g.add(glow);
-  g.position.set(x, 0, z); scene.add(g);
-}
-[-5,-2.5,0,2.5,5].forEach(x => [1,-3,-7,-11,-15].forEach(z => mkStrip(x, z)));
-const SEGS = 14, DESK_R = 3.9;
-for(let i=0;i<SEGS;i++){
-  const a = (i/SEGS)*Math.PI - Math.PI*0.06;
-  const x = Math.sin(a)*DESK_R, z = -Math.cos(a)*DESK_R + 1.2;
-  const top = new THREE.Mesh(new THREE.BoxGeometry(0.78,0.07,1.15), mMetal);
-  top.position.set(x,-0.55,z); top.rotation.y = -a; top.castShadow = true; top.receiveShadow = true; scene.add(top);
-  const front = new THREE.Mesh(new THREE.BoxGeometry(0.76,1.35,0.04), mMetalD);
-  front.position.set(Math.sin(a)*3.28,-1.22,-Math.cos(a)*3.28+1.2); front.rotation.y = -a; scene.add(front);
-}
-const deskBase = new THREE.Mesh(new THREE.CylinderGeometry(3.2,3.2,0.06,32,1,false,Math.PI*0.06,Math.PI*0.88), mMetalD);
-deskBase.position.set(0,-0.56,1.2); scene.add(deskBase);
-const SCRS = 8, SCR_R = 3.55;
-const screens = [];
-for(let i=0;i<SCRS;i++){
-  const a = ((i/(SCRS-1))-0.5)*Math.PI*0.85;
-  const x = Math.sin(a)*SCR_R, z = -Math.cos(a)*SCR_R + 1.2;
-  const g = new THREE.Group();
-  const frame = new THREE.Mesh(new THREE.BoxGeometry(1.52,0.94,0.022), mMetalD); g.add(frame);
-  const scrMat = new THREE.MeshBasicMaterial({color:0x002a3d,transparent:true,opacity:0.9});
-  const scr = new THREE.Mesh(new THREE.PlaneGeometry(1.46,0.88), scrMat);
-  scr.position.z = 0.013; g.add(scr); screens.push(scrMat);
-  for(let r=-4;r<=4;r++){
-    const pts=[new THREE.Vector3(-0.72,r*0.1,0.014),new THREE.Vector3(0.72,r*0.1,0.014)];
-    g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({color:0x004466,transparent:true,opacity:0.3})));
+  const scene=new THREE.Scene();
+  scene.background=new THREE.Color(0x05080d);
+  scene.fog=new THREE.Fog(0x05080d,18,55);
+  const cam=new THREE.PerspectiveCamera(52,W()/H(),0.1,100);
+  cam.position.set(0,2.8,16);cam.lookAt(0,1.5,0);
+  scene.add(new THREE.AmbientLight(0x08101a,6));
+  const key=new THREE.DirectionalLight(0xd0e8ff,1.2);
+  key.position.set(-6,9,4);key.castShadow=true;
+  key.shadow.mapSize.set(2048,2048);
+  key.shadow.camera.near=0.5;key.shadow.camera.far=50;
+  key.shadow.camera.left=-15;key.shadow.camera.right=15;
+  key.shadow.camera.top=15;key.shadow.camera.bottom=-15;
+  key.shadow.bias=-0.0005;scene.add(key);
+  const fill=new THREE.DirectionalLight(0x8090c0,0.4);fill.position.set(8,5,2);scene.add(fill);
+  const rim=new THREE.DirectionalLight(0x2060a0,0.6);rim.position.set(0,8,-12);scene.add(rim);
+  [[-5,0],[-2.5,0],[0,0],[2.5,0],[5,0],[-5,-8],[0,-8],[5,-8]].forEach(([x,z])=>{
+    const pl=new THREE.PointLight(0x0088bb,0.55,14);pl.position.set(x,6.2,z);scene.add(pl);
+  });
+  const bgGlow=new THREE.PointLight(0xb05a10,0.6,28);bgGlow.position.set(0,3,-18);scene.add(bgGlow);
+  const deskGlow=new THREE.PointLight(0x00aacc,0.9,10);deskGlow.position.set(0,1.8,1.5);scene.add(deskGlow);
+  const mFloor=new THREE.MeshStandardMaterial({color:0x0a0d12,metalness:0.6,roughness:0.55});
+  const mMetal=new THREE.MeshStandardMaterial({color:0x1a2028,metalness:0.92,roughness:0.18});
+  const mMetalD=new THREE.MeshStandardMaterial({color:0x0c1018,metalness:0.88,roughness:0.25});
+  const mWood=new THREE.MeshStandardMaterial({color:0x1c140a,metalness:0.05,roughness:0.82});
+  const mWall=new THREE.MeshStandardMaterial({color:0x090d12,metalness:0.3,roughness:0.88});
+  const mGlass=new THREE.MeshPhysicalMaterial({color:0x4080a0,metalness:0,roughness:0,transmission:0.85,transparent:true,opacity:0.15,side:THREE.DoubleSide});
+  const mHolo=new THREE.MeshBasicMaterial({color:0x003850,transparent:true,opacity:0.78,side:THREE.DoubleSide});
+  const mEdge=new THREE.LineBasicMaterial({color:0x00aacc,transparent:true,opacity:0.55});
+  const mAmber=new THREE.MeshStandardMaterial({color:0xe8a020,metalness:0.4,roughness:0.5,emissive:0x704800,emissiveIntensity:0.3});
+  const mCeil=new THREE.MeshStandardMaterial({color:0x070a0e,metalness:0.2,roughness:0.92});
+  function mkEdges(geo,mat){return new THREE.LineSegments(new THREE.EdgesGeometry(geo),mat||mEdge)}
+  const floor=new THREE.Mesh(new THREE.PlaneGeometry(30,60),mFloor);
+  floor.rotation.x=-Math.PI/2;floor.position.y=-1.8;floor.receiveShadow=true;scene.add(floor);
+  const grid=new THREE.GridHelper(30,24,0x0d1828,0x07101a);grid.position.y=-1.79;scene.add(grid);
+  const ceil=new THREE.Mesh(new THREE.PlaneGeometry(30,60),mCeil);
+  ceil.rotation.x=Math.PI/2;ceil.position.y=7.5;scene.add(ceil);
+  const bWall=new THREE.Mesh(new THREE.PlaneGeometry(30,10),mWall);bWall.position.set(0,3.2,-20);scene.add(bWall);
+  const lWall=new THREE.Mesh(new THREE.PlaneGeometry(60,10),mWall);lWall.rotation.y=Math.PI/2;lWall.position.set(-13,3.2,-10);scene.add(lWall);
+  const rWall=new THREE.Mesh(new THREE.PlaneGeometry(60,10),mWall);rWall.rotation.y=-Math.PI/2;rWall.position.set(13,3.2,-10);scene.add(rWall);
+  function mkStrip(x,z,len=3.5){
+    const g=new THREE.Group();
+    g.add(Object.assign(new THREE.Mesh(new THREE.BoxGeometry(len,0.06,0.2),mMetalD),{position:new THREE.Vector3(0,7.48,0)}));
+    g.add(Object.assign(new THREE.Mesh(new THREE.BoxGeometry(len-0.1,0.02,0.16),new THREE.MeshBasicMaterial({color:0xbbeeff,transparent:true,opacity:0.9})),{position:new THREE.Vector3(0,7.49,0)}));
+    g.position.set(x,0,z);scene.add(g);
   }
-  g.add(mkEdges(new THREE.BoxGeometry(1.5,0.92,0.001)));
-  g.position.set(x,0.85,z); g.rotation.y = -a; g.rotation.x = -0.08; scene.add(g);
-}
-const holoPanels = [];
-function mkHoloPanel(x,y,z,w,h,ry=0){
-  const g = new THREE.Group();
-  const p = new THREE.Mesh(new THREE.PlaneGeometry(w,h), mHolo); g.add(p);
-  g.add(mkEdges(new THREE.PlaneGeometry(w,h)));
-  for(let r=-3;r<=3;r++){
-    const pts=[new THREE.Vector3(-w/2,r*(h/7),0.001),new THREE.Vector3(w/2,r*(h/7),0.001)];
-    g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({color:0x00556a,transparent:true,opacity:0.25})));
+  [-5,-2.5,0,2.5,5].forEach(x=>[1,-3,-7,-11,-15].forEach(z=>mkStrip(x,z)));
+  const SEGS=14,DESK_R=3.9;
+  for(let i=0;i<SEGS;i++){
+    const a=(i/SEGS)*Math.PI-Math.PI*0.06;
+    const x=Math.sin(a)*DESK_R,z=-Math.cos(a)*DESK_R+1.2;
+    const top=new THREE.Mesh(new THREE.BoxGeometry(0.78,0.07,1.15),mMetal);
+    top.position.set(x,-0.55,z);top.rotation.y=-a;top.castShadow=true;top.receiveShadow=true;scene.add(top);
+    const front=new THREE.Mesh(new THREE.BoxGeometry(0.76,1.35,0.04),mMetalD);
+    front.position.set(Math.sin(a)*3.28,-1.22,-Math.cos(a)*3.28+1.2);front.rotation.y=-a;scene.add(front);
   }
-  g.position.set(x,y,z); g.rotation.y = ry; scene.add(g); holoPanels.push(g); return g;
-}
-mkHoloPanel(-3.8,2.85,-2.8,1.9,1.15,0.38);
-mkHoloPanel(3.8,2.85,-2.8,1.9,1.15,-0.38);
-mkHoloPanel(0,3.35,-4.6,2.6,1.3,0);
-const arcGroup = new THREE.Group();
-arcGroup.position.set(0, 2.6, -2);
-[0.55,0.38,0.22].forEach((r,i) => {
-  arcGroup.add(new THREE.Mesh(new THREE.TorusGeometry(r,0.012,8,64), new THREE.MeshBasicMaterial({color:0x00c8e8,transparent:true,opacity:0.6-i*0.12})));
-});
-arcGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.1,16,16), new THREE.MeshStandardMaterial({color:0x00c8e8,emissive:0x00c8e8,emissiveIntensity:2,metalness:0,roughness:0})));
-const arcPl = new THREE.PointLight(0x00c8e8, 2.5, 5);
-arcGroup.add(arcPl); scene.add(arcGroup);
-function mkArm(baseX, baseZ, scale=1){
-  const g = new THREE.Group();
-  g.add(Object.assign(new THREE.Mesh(new THREE.CylinderGeometry(.28,.32,.22,16), mMetal), {position: new THREE.Vector3(0,0,0)}));
-  const l1=new THREE.Mesh(new THREE.BoxGeometry(.11,.85,.11), mMetal);
-  l1.position.set(.12,.53,0); l1.rotation.z=.3; g.add(l1);
-  const j1=new THREE.Mesh(new THREE.SphereGeometry(.1,10,10), mMetal);
-  j1.position.set(.26,.92,0); g.add(j1);
-  const l2=new THREE.Mesh(new THREE.BoxGeometry(.09,.72,.09), mMetal);
-  l2.position.set(.5,1.18,0); l2.rotation.z=-.35; g.add(l2);
-  const eff=new THREE.Mesh(new THREE.BoxGeometry(.2,.07,.24), mMetal);
-  eff.position.set(.76,1.45,0); g.add(eff);
-  [-.07,.07].forEach(ox=>{
-    const f=new THREE.Mesh(new THREE.BoxGeometry(.035,.14,.035), mMetalD);
-    f.position.set(.76+ox,1.38,0); g.add(f);
-  });
-  g.position.set(baseX,-1.8,baseZ); g.scale.setScalar(scale); scene.add(g); return g;
-}
-const arm1 = mkArm(-8.5,-5.5,1.15);
-const arm2 = mkArm(8,-5,0.95);
-function mkBench(x, z, w=2.8, d=0.95){
-  const g=new THREE.Group();
-  const top=new THREE.Mesh(new THREE.BoxGeometry(w,.065,d), mWood);
-  top.castShadow=true; top.receiveShadow=true; g.add(top);
-  const lip=new THREE.Mesh(new THREE.BoxGeometry(w,.04,.04), mMetal);
-  lip.position.set(0,.05,d/2); g.add(lip);
-  [[-(w/2-.07),-(d/2-.07)],[w/2-.07,-(d/2-.07)],[-(w/2-.07),d/2-.07],[w/2-.07,d/2-.07]].forEach(([lx,lz])=>{
-    const l=new THREE.Mesh(new THREE.BoxGeometry(.055,1.15,.055), mMetal);
-    l.position.set(lx,-.6,lz); g.add(l);
-  });
-  const sh=new THREE.Mesh(new THREE.BoxGeometry(w-.1,.04,d-.1), mWood);
-  sh.position.y=-1.0; g.add(sh);
-  g.position.set(x,-.13,z); scene.add(g); return g;
-}
-mkBench(-7.5,-1.5,3); mkBench(7.5,-1.5,3);
-mkBench(-8,-9,2.8); mkBench(8,-9,2.8); mkBench(0,-13.5,4.5);
-function mk3DPrinter(x, z){
-  const g=new THREE.Group();
-  const body=new THREE.Mesh(new THREE.BoxGeometry(.78,.92,.62), mMetalD);
-  body.position.y=.46; g.add(body);
-  const bed=new THREE.Mesh(new THREE.BoxGeometry(.6,.025,.5), new THREE.MeshStandardMaterial({color:0x0a1828,metalness:.5,roughness:.6}));
-  bed.position.y=.12; g.add(bed);
-  const gantry=new THREE.Mesh(new THREE.BoxGeometry(.72,.025,.025), mMetal);
-  gantry.position.y=.88; g.add(gantry);
-  const nozzle=new THREE.Mesh(new THREE.CylinderGeometry(.018,.012,.14,8), mMetal);
-  nozzle.position.set(0,.81,0); g.add(nozzle);
-  g.add(mkEdges(new THREE.BoxGeometry(.78,.92,.62)));
-  g.position.set(x,-1.15,z); scene.add(g); return g;
-}
-mk3DPrinter(9,-2.5);
-function mkPlatform(x, z){
-  const g=new THREE.Group();
-  const plat=new THREE.Mesh(new THREE.BoxGeometry(2.4,.1,4.2), mMetal);
-  plat.receiveShadow=true; g.add(plat);
-  const body=new THREE.Mesh(new THREE.BoxGeometry(1.7,.42,3.2), mMetalD);
-  body.position.y=.26; g.add(body);
-  const roof=new THREE.Mesh(new THREE.BoxGeometry(1.2,.36,1.8), mMetalD);
-  roof.position.y=.7; g.add(roof);
-  const wm=new THREE.MeshStandardMaterial({color:0x060a0e,metalness:.6,roughness:.5});
-  [[-0.9,.2,1.1],[0.9,.2,1.1],[-0.9,.2,-1.1],[0.9,.2,-1.1]].forEach(([wx,wy,wz])=>{
-    const w=new THREE.Mesh(new THREE.CylinderGeometry(.24,.24,.2,14), wm);
-    w.rotation.z=Math.PI/2; w.position.set(wx,wy,wz); g.add(w);
-  });
-  g.position.set(x,-1.75,z); scene.add(g);
-}
-mkPlatform(-9.5,-10); mkPlatform(9.5,-10);
-function mkShelf(x, z, shelves=4){
-  const g=new THREE.Group();
-  for(let s=0;s<shelves;s++){
-    const sh=new THREE.Mesh(new THREE.BoxGeometry(2,.04,.4), mWood);
-    sh.position.y=s*.55; g.add(sh);
+  const deskBase=new THREE.Mesh(new THREE.CylinderGeometry(3.2,3.2,0.06,32,1,false,Math.PI*0.06,Math.PI*0.88),mMetalD);
+  deskBase.position.set(0,-0.56,1.2);scene.add(deskBase);
+  const SCRS=8,SCR_R=3.55,screens=[];
+  for(let i=0;i<SCRS;i++){
+    const a=((i/(SCRS-1))-0.5)*Math.PI*0.85;
+    const x=Math.sin(a)*SCR_R,z=-Math.cos(a)*SCR_R+1.2;
+    const g=new THREE.Group();
+    g.add(new THREE.Mesh(new THREE.BoxGeometry(1.52,0.94,0.022),mMetalD));
+    const scrMat=new THREE.MeshBasicMaterial({color:0x002a3d,transparent:true,opacity:0.9});
+    const scr=new THREE.Mesh(new THREE.PlaneGeometry(1.46,0.88),scrMat);
+    scr.position.z=0.013;g.add(scr);screens.push(scrMat);
+    for(let r=-4;r<=4;r++){
+      const pts=[new THREE.Vector3(-0.72,r*0.1,0.014),new THREE.Vector3(0.72,r*0.1,0.014)];
+      g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0x004466,transparent:true,opacity:0.3})));
+    }
+    g.add(mkEdges(new THREE.BoxGeometry(1.5,0.92,0.001)));
+    g.position.set(x,0.85,z);g.rotation.y=-a;g.rotation.x=-0.08;scene.add(g);
   }
-  [-1,1].forEach(sx=>{
-    const p=new THREE.Mesh(new THREE.BoxGeometry(.04,shelves*.55,.4), mMetal);
-    p.position.set(sx*.98,(shelves*.55)/2-.28,0); g.add(p);
+  const holoPanels=[];
+  function mkHoloPanel(x,y,z,w,h,ry=0){
+    const g=new THREE.Group();
+    g.add(new THREE.Mesh(new THREE.PlaneGeometry(w,h),mHolo));
+    g.add(mkEdges(new THREE.PlaneGeometry(w,h)));
+    for(let r=-3;r<=3;r++){
+      const pts=[new THREE.Vector3(-w/2,r*(h/7),0.001),new THREE.Vector3(w/2,r*(h/7),0.001)];
+      g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0x00556a,transparent:true,opacity:0.25})));
+    }
+    g.position.set(x,y,z);g.rotation.y=ry;scene.add(g);holoPanels.push(g);return g;
+  }
+  mkHoloPanel(-3.8,2.85,-2.8,1.9,1.15,0.38);
+  mkHoloPanel(3.8,2.85,-2.8,1.9,1.15,-0.38);
+  mkHoloPanel(0,3.35,-4.6,2.6,1.3,0);
+  const arcGroup=new THREE.Group();arcGroup.position.set(0,2.6,-2);
+  [0.55,0.38,0.22].forEach((r,i)=>{
+    arcGroup.add(new THREE.Mesh(new THREE.TorusGeometry(r,0.012,8,64),new THREE.MeshBasicMaterial({color:0x00c8e8,transparent:true,opacity:0.6-i*0.12})));
   });
-  g.position.set(x,-1.75,z); scene.add(g);
+  arcGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.1,16,16),new THREE.MeshStandardMaterial({color:0x00c8e8,emissive:0x00c8e8,emissiveIntensity:2,metalness:0,roughness:0})));
+  const arcPl=new THREE.PointLight(0x00c8e8,2.5,5);arcGroup.add(arcPl);scene.add(arcGroup);
+  function mkArm(bx,bz,sc=1){
+    const g=new THREE.Group();
+    g.add(new THREE.Mesh(new THREE.CylinderGeometry(.28,.32,.22,16),mMetal));
+    const l1=new THREE.Mesh(new THREE.BoxGeometry(.11,.85,.11),mMetal);l1.position.set(.12,.53,0);l1.rotation.z=.3;g.add(l1);
+    const j1=new THREE.Mesh(new THREE.SphereGeometry(.1,10,10),mMetal);j1.position.set(.26,.92,0);g.add(j1);
+    const l2=new THREE.Mesh(new THREE.BoxGeometry(.09,.72,.09),mMetal);l2.position.set(.5,1.18,0);l2.rotation.z=-.35;g.add(l2);
+    const eff=new THREE.Mesh(new THREE.BoxGeometry(.2,.07,.24),mMetal);eff.position.set(.76,1.45,0);g.add(eff);
+    [-.07,.07].forEach(ox=>{const f=new THREE.Mesh(new THREE.BoxGeometry(.035,.14,.035),mMetalD);f.position.set(.76+ox,1.38,0);g.add(f);});
+    g.position.set(bx,-1.8,bz);g.scale.setScalar(sc);scene.add(g);return g;
+  }
+  const arm1=mkArm(-8.5,-5.5,1.15),arm2=mkArm(8,-5,0.95);
+  function mkBench(x,z,w=2.8,d=0.95){
+    const g=new THREE.Group();
+    const top=new THREE.Mesh(new THREE.BoxGeometry(w,.065,d),mWood);top.castShadow=true;top.receiveShadow=true;g.add(top);
+    const lip=new THREE.Mesh(new THREE.BoxGeometry(w,.04,.04),mMetal);lip.position.set(0,.05,d/2);g.add(lip);
+    [[-(w/2-.07),-(d/2-.07)],[w/2-.07,-(d/2-.07)],[-(w/2-.07),d/2-.07],[w/2-.07,d/2-.07]].forEach(([lx,lz])=>{
+      const l=new THREE.Mesh(new THREE.BoxGeometry(.055,1.15,.055),mMetal);l.position.set(lx,-.6,lz);g.add(l);
+    });
+    const sh=new THREE.Mesh(new THREE.BoxGeometry(w-.1,.04,d-.1),mWood);sh.position.y=-1.0;g.add(sh);
+    g.position.set(x,-.13,z);scene.add(g);
+  }
+  mkBench(-7.5,-1.5,3);mkBench(7.5,-1.5,3);mkBench(-8,-9,2.8);mkBench(8,-9,2.8);mkBench(0,-13.5,4.5);
+  function mk3DP(x,z){
+    const g=new THREE.Group();
+    const body=new THREE.Mesh(new THREE.BoxGeometry(.78,.92,.62),mMetalD);body.position.y=.46;g.add(body);
+    const bed=new THREE.Mesh(new THREE.BoxGeometry(.6,.025,.5),new THREE.MeshStandardMaterial({color:0x0a1828,metalness:.5,roughness:.6}));bed.position.y=.12;g.add(bed);
+    const gantry=new THREE.Mesh(new THREE.BoxGeometry(.72,.025,.025),mMetal);gantry.position.y=.88;g.add(gantry);
+    const nozzle=new THREE.Mesh(new THREE.CylinderGeometry(.018,.012,.14,8),mMetal);nozzle.position.set(0,.81,0);g.add(nozzle);
+    g.add(mkEdges(new THREE.BoxGeometry(.78,.92,.62)));g.position.set(x,-1.15,z);scene.add(g);
+  }
+  mk3DP(9,-2.5);
+  function mkPlat(x,z){
+    const g=new THREE.Group();
+    const plat=new THREE.Mesh(new THREE.BoxGeometry(2.4,.1,4.2),mMetal);plat.receiveShadow=true;g.add(plat);
+    const body=new THREE.Mesh(new THREE.BoxGeometry(1.7,.42,3.2),mMetalD);body.position.y=.26;g.add(body);
+    const roof=new THREE.Mesh(new THREE.BoxGeometry(1.2,.36,1.8),mMetalD);roof.position.y=.7;g.add(roof);
+    const wm=new THREE.MeshStandardMaterial({color:0x060a0e,metalness:.6,roughness:.5});
+    [[-0.9,.2,1.1],[0.9,.2,1.1],[-0.9,.2,-1.1],[0.9,.2,-1.1]].forEach(([wx,wy,wz])=>{
+      const w=new THREE.Mesh(new THREE.CylinderGeometry(.24,.24,.2,14),wm);w.rotation.z=Math.PI/2;w.position.set(wx,wy,wz);g.add(w);
+    });
+    g.position.set(x,-1.75,z);scene.add(g);
+  }
+  mkPlat(-9.5,-10);mkPlat(9.5,-10);
+  function mkShelf(x,z,n=4){
+    const g=new THREE.Group();
+    for(let s=0;s<n;s++){const sh=new THREE.Mesh(new THREE.BoxGeometry(2,.04,.4),mWood);sh.position.y=s*.55;g.add(sh);}
+    [-1,1].forEach(sx=>{const p=new THREE.Mesh(new THREE.BoxGeometry(.04,n*.55,.4),mMetal);p.position.set(sx*.98,(n*.55)/2-.28,0);g.add(p);});
+    g.position.set(x,-1.75,z);scene.add(g);
+  }
+  mkShelf(-10.5,-15,5);mkShelf(10.5,-15,5);mkShelf(0,-18,4);
+  const dg=new THREE.Group();
+  const dfm=new THREE.MeshStandardMaterial({color:0x1a2838,metalness:.95,roughness:.1});
+  const df=new THREE.Mesh(new THREE.BoxGeometry(2.6,.1,4),dfm);df.position.y=2;dg.add(df);
+  [-.65,.65].forEach(dx=>{const p=new THREE.Mesh(new THREE.PlaneGeometry(1.15,3.8),mGlass);p.position.set(dx,0,0);dg.add(p);});
+  const handle=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.5,8),mAmber);handle.rotation.z=Math.PI/2;handle.position.set(.4,-.2,.06);dg.add(handle);
+  dg.position.set(0,.05,14);scene.add(dg);
+  const PC=500,pPos=new Float32Array(PC*3);
+  for(let i=0;i<PC;i++){pPos[i*3]=(Math.random()-.5)*28;pPos[i*3+1]=Math.random()*9-1.5;pPos[i*3+2]=(Math.random()-.5)*48-10;}
+  const pGeo=new THREE.BufferGeometry();pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+  const pMesh=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0x004466,size:.045,transparent:true,opacity:.55}));
+  scene.add(pMesh);
+  let prog=0,tProg=0;
+  window.addEventListener('scroll',()=>{const tot=document.documentElement.scrollHeight-window.innerHeight;tProg=Math.min(1,window.scrollY/tot);},{passive:true});
+  const WP=[[0,2.8,14,0,1.5,0],[0,2.2,6,0,1.8,-2],[0,1.8,0,0,0.5,-4],[-2,1.8,-5,-6,1.5,-10],[2,1.8,-8,6,1.5,-14],[0,2.0,-13,0,1.0,-22]];
+  function wpL(t){const n=WP.length-1,fi=t*n,i0=Math.floor(fi),i1=Math.min(i0+1,n),f=fi-i0;return WP[0].map((_,k)=>WP[i0][k]+(WP[i1][k]-WP[i0][k])*f);}
+  const clock=new THREE.Clock();
+  function lerp(a,b,t){return a+(b-a)*t}
+  function animate(){
+    requestAnimationFrame(animate);
+    const t=clock.getElapsedTime();
+    prog=lerp(prog,tProg,0.04);
+    const wp=wpL(prog);
+    const sw=Math.sin(t*.28)*.035;
+    cam.position.set(lerp(cam.position.x,wp[0]+sw,.05),lerp(cam.position.y,wp[1],.04),lerp(cam.position.z,wp[2],.04));
+    cam.lookAt(wp[3]+sw*.3,wp[4],wp[5]);
+    holoPanels.forEach((p,i)=>{p.position.y=([2.85,2.85,3.35][i])+Math.sin(t*.55+i)*0.04});
+    const rings=arcGroup.children.filter(c=>c.type==='Mesh'&&c.geometry.type==='TorusGeometry');
+    rings.forEach((r,i)=>{r.rotation.z=t*(.7-i*.15);r.rotation.x=t*(.3+i*.1)*(i%2?1:-1);});
+    arcPl.intensity=2.2+Math.sin(t*1.8)*.5;
+    screens.forEach((s,i)=>{s.opacity=0.85+Math.sin(t*(.35+i*.06))*.05});
+    arm1.rotation.y=Math.sin(t*.38)*.1;arm2.rotation.y=Math.sin(t*.38+2)*.08;
+    const pa=pMesh.geometry.attributes.position.array;
+    for(let i=0;i<PC;i++){pa[i*3+1]+=.0018;if(pa[i*3+1]>7.5)pa[i*3+1]=-1.5;}
+    pMesh.geometry.attributes.position.needsUpdate=true;
+    deskGlow.intensity=.8+Math.sin(t*1.2)*.15;
+    renderer.render(scene,cam);
+  }
+  animate();
+  window.addEventListener('resize',()=>{cam.aspect=W()/H();cam.updateProjectionMatrix();renderer.setSize(W(),H());});
+} catch(e) {
+  console.warn('3D scene error:',e);
+  document.getElementById('c').style.display='none';
 }
-mkShelf(-10.5,-15,5); mkShelf(10.5,-15,5); mkShelf(0,-18,4);
-const doorGroup = new THREE.Group();
-const doorFrameMat = new THREE.MeshStandardMaterial({color:0x1a2838,metalness:.95,roughness:.1});
-doorGroup.add(Object.assign(new THREE.Mesh(new THREE.BoxGeometry(2.6,.1,4), doorFrameMat), {position: new THREE.Vector3(0,2,0)}));
-[-.65,.65].forEach(dx=>{
-  const panel=new THREE.Mesh(new THREE.PlaneGeometry(1.15,3.8), mGlass);
-  panel.position.set(dx,0,0); doorGroup.add(panel);
-});
-const handle=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.5,8), mAmber);
-handle.rotation.z=Math.PI/2; handle.position.set(.4,-.2,.06); doorGroup.add(handle);
-doorGroup.position.set(0,.05,14); scene.add(doorGroup);
-const PC=500, pPos=new Float32Array(PC*3);
-for(let i=0;i<PC;i++){pPos[i*3]=(Math.random()-.5)*28;pPos[i*3+1]=Math.random()*9-1.5;pPos[i*3+2]=(Math.random()-.5)*48-10;}
-const pGeo=new THREE.BufferGeometry();
-pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
-const pMesh=new THREE.Points(pGeo, new THREE.PointsMaterial({color:0x004466,size:.045,transparent:true,opacity:.55}));
-scene.add(pMesh);
-let prog=0, tProg=0;
-window.addEventListener('scroll',()=>{
-  const tot=document.documentElement.scrollHeight-window.innerHeight;
-  tProg=Math.min(1, window.scrollY/tot);
-},{passive:true});
-const WAYPOINTS=[
-  [0,2.8,14,  0,1.5, 0],
-  [0,2.2, 6,  0,1.8,-2],
-  [0,1.8, 0,  0,0.5,-4],
-  [-2,1.8,-5,-6,1.5,-10],
-  [2,1.8,-8,  6,1.5,-14],
-  [0,2.0,-13, 0,1.0,-22],
-];
-function wpLerp(wp, t){
-  const n=WAYPOINTS.length-1, fi=t*n;
-  const i0=Math.floor(fi), i1=Math.min(i0+1,n);
-  const f=fi-i0;
-  return wp.map((_,k)=>WAYPOINTS[i0][k]+(WAYPOINTS[i1][k]-WAYPOINTS[i0][k])*f);
-}
-const clock=new THREE.Clock();
-function lerp(a,b,t){return a+(b-a)*t}
-function animate(){
-  requestAnimationFrame(animate);
-  const t=clock.getElapsedTime();
-  prog=lerp(prog,tProg,0.04);
-  const wp=wpLerp(WAYPOINTS,prog);
-  const sway=Math.sin(t*.28)*.035;
-  cam.position.set(lerp(cam.position.x,wp[0]+sway,.05),lerp(cam.position.y,wp[1],.04),lerp(cam.position.z,wp[2],.04));
-  cam.lookAt(wp[3]+sway*.3,wp[4],wp[5]);
-  holoPanels.forEach((p,i)=>{p.position.y=([2.85,2.85,3.35][i])+Math.sin(t*.55+i)*0.04});
-  const rings=arcGroup.children.filter(c=>c.type==='Mesh'&&c.geometry.type==='TorusGeometry');
-  rings.forEach((r,i)=>{r.rotation.z=t*(.7-i*.15);r.rotation.x=t*(.3+i*.1)*(i%2?1:-1);});
-  arcPl.intensity=2.2+Math.sin(t*1.8)*.5;
-  screens.forEach((s,i)=>{s.opacity=0.85+Math.sin(t*(.35+i*.06))*.05});
-  arm1.rotation.y=Math.sin(t*.38)*.1;
-  arm2.rotation.y=Math.sin(t*.38+2)*.08;
-  const pa=pMesh.geometry.attributes.position.array;
-  for(let i=0;i<PC;i++){pa[i*3+1]+=.0018;if(pa[i*3+1]>7.5)pa[i*3+1]=-1.5;}
-  pMesh.geometry.attributes.position.needsUpdate=true;
-  deskGlow.intensity=.8+Math.sin(t*1.2)*.15;
-  renderer.render(scene, cam);
-}
-animate();
-window.addEventListener('resize',()=>{cam.aspect=W()/H();cam.updateProjectionMatrix();renderer.setSize(W(),H());});
 
 // ── SCROLL REVEAL ─────────────────────────────────────────────
-const rvEls=document.querySelectorAll('.rv');
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
-},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-rvEls.forEach(el=>obs.observe(el));
+// Force all .rv visible immediately as fallback, then animate those in view
+document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+
+// Then re-hide and animate them properly
+setTimeout(()=>{
+  document.querySelectorAll('.rv').forEach(el=>el.classList.remove('in'));
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+  },{threshold:.05,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+},100);
+
 document.querySelectorAll('.skill-bar').forEach(bar=>{
   bar.style.width='0%';
   const bObs=new IntersectionObserver(([e])=>{
@@ -1140,12 +909,14 @@ document.querySelectorAll('.skill-bar').forEach(bar=>{
   },{threshold:.5});
   bObs.observe(bar);
 });
+
 const SECS=['entrance','about','projects','skills','experience','contact'];
 window.addEventListener('scroll',()=>{
   let cur='entrance';
   SECS.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-180)cur=id;});
-  document.querySelectorAll('.nav-a').forEach((a,i)=>{a.classList.toggle('on',SECS[i]===cur);});
+  document.querySelectorAll('.nav-a').forEach((a,i)=>a.classList.toggle('on',SECS[i]===cur));
 },{passive:true});
+
 function goto(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
 </script>
 </body>
